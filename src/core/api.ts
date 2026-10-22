@@ -795,6 +795,48 @@ async function keyFromRequest(req: Request, c: Context) {
   return key;
 }
 
+/**
+ * Suppress every address in `events` (hard bounces and complaints) and record
+ * the reason. Without `workspaceId`, the event is applied across the instance:
+ * a hard bounce on a shared sending domain is not workspace-specific.
+ */
+export async function applyBounceEvents(
+  c: Context,
+  events: BounceEvent[],
+  workspaceId?: string,
+  actor = "system",
+) {
+  let suppressed = 0;
+  const workspaceIds = workspaceId
+    ? [workspaceId]
+    : ((await q(c, "SELECT id FROM workspaces").all()).results as Row[]).map(
+        (row) => String(row.id),
+      );
+  for (const event of events) {
+    if (event.kind === "soft") continue;
+    const action =
+      event.kind === "complaint" ? "contact.complaint" : "contact.bounce";
+    for (const w of workspaceIds) {
+      const result = await q(
+        c,
+        "UPDATE contacts SET status='suppressed',consent=0 WHERE workspace_id=? AND email=? AND status<>'suppressed'",
+        w,
+        event.email,
+      ).run();
+      if ((result as { changes?: number })?.changes) suppressed += 1;
+      if ((result as { changes?: number })?.changes || workspaceId)
+        await audit(
+          c,
+          w,
+          action,
+          `${event.email}${event.status ? " · " + event.status : ""}`,
+          actor,
+        ).run();
+    }
+  }
+  return { received: events.length, suppressed };
+}
+
 async function ingestBounces(req: Request, c: Context) {
   const key = await keyFromRequest(req, c);
   const payload = (await body(req)) as {
@@ -817,26 +859,9 @@ async function ingestBounces(req: Request, c: Context) {
   events = dedupe(events).slice(0, 200);
   if (!events.length)
     throw new Problem(400, "Không tìm thấy bounce trong nội dung");
-
-  let suppressed = 0;
-  for (const event of events) {
-    if (event.kind === "soft") continue;
-    const result = await q(
-      c,
-      "UPDATE contacts SET status='suppressed',consent=0 WHERE workspace_id=? AND email=? AND status<>'suppressed'",
-      key.workspace_id,
-      event.email,
-    ).run();
-    if ((result as { changes?: number })?.changes) suppressed += 1;
-    await audit(
-      c,
-      key.workspace_id,
-      event.kind === "complaint" ? "contact.complaint" : "contact.bounce",
-      `${event.email}${event.status ? " · " + event.status : ""}`,
-      `key:${key.id}`,
-    ).run();
-  }
-  return json({ received: events.length, suppressed });
+  return json(
+    await applyBounceEvents(c, events, key.workspace_id, `key:${key.id}`),
+  );
 }
 
 export async function handleApi(req: Request, c: Context): Promise<Response> {

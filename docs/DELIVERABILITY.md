@@ -72,6 +72,42 @@ script from cron (or forward those messages to a small relay that posts the raw
 body). The API is deliberately transport-agnostic: IMAP, Maildir, a provider
 webhook or a forwarder all work.
 
+## 4. Read the bounce mailbox over IMAP
+
+If your bounce mailbox lives on Gmail, Zoho, Mailcow or any other IMAP server,
+the app can read it itself — no cron, no forwarder:
+
+```ini
+BOUNCE_IMAP_HOST=imap.example.vn
+BOUNCE_IMAP_PORT=993
+BOUNCE_IMAP_SECURE=true
+BOUNCE_IMAP_USER=bounce@example.vn
+BOUNCE_IMAP_PASS=app-password-here
+BOUNCE_IMAP_MAILBOX=INBOX
+BOUNCE_IMAP_INTERVAL=60
+# Optional: restrict suppression to one workspace id
+# BOUNCE_WORKSPACE=
+```
+
+Behaviour, in order:
+
+1. Every `BOUNCE_IMAP_INTERVAL` seconds the poller connects, takes a mailbox
+   lock, and searches for **unseen** messages (newest 25 per tick).
+2. Each message is parsed with the same `parseBounce()` used by the HTTP
+   endpoint. Unrelated mail is ignored — but still marked `\Seen`, so it is not
+   re-read on the next tick.
+3. Hard bounces and complaints suppress the address everywhere on the instance
+   (or only in `BOUNCE_WORKSPACE`), and write an audit row attributed to `imap`.
+4. Soft bounces are counted and dropped; nothing is suppressed.
+5. A failed connection is logged (`bounce_poll_failed`) and retried on the next
+   tick. It never crashes the server or blocks campaign processing.
+
+Use an app password, not the account password, and give the mailbox its own
+account: the poller only needs IMAP read + flag access. A restart does not replay
+old mail because processed messages are flagged seen; a crash between flagging
+and suppressing is the only way an event is lost, and the next bounce for that
+address will cover it.
+
 ## What is still yours to operate
 
 - Outbound port 25, a static IP and matching PTR record.

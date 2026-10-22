@@ -1,6 +1,6 @@
 {
   "name": "nep-mail",
-  "version": "0.2.0-alpha.1",
+  "version": "0.2.0-alpha.2",
   "private": true,
   "type": "module",
   "license": "AGPL-3.0-or-later",
@@ -18,22 +18,23 @@
     "format:check": "prettier --check src selfhost tests db docs scripts *.md vite.selfhost.config.ts"
   },
   "dependencies": {
+    "imapflow": "^2.4.3",
+    "lucide-react": "1.31.0",
+    "nodemailer": "10.1.1",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "lucide-react": "1.31.0",
-    "zod": "3.25.76",
-    "nodemailer": "10.1.1"
+    "zod": "3.25.76"
   },
   "devDependencies": {
     "@types/node": "22.19.19",
+    "@types/nodemailer": "8.0.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@types/nodemailer": "8.0.2",
     "@vitejs/plugin-react": "6.0.2",
-    "vite": "8.0.13",
-    "typescript": "5.9.3",
-    "prettier": "3.9.10",
+    "drizzle-kit": "0.31.10",
     "drizzle-orm": "0.45.2",
-    "drizzle-kit": "0.31.10"
+    "prettier": "3.9.10",
+    "typescript": "5.9.3",
+    "vite": "8.0.13"
   }
 }

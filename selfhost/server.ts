@@ -5,6 +5,7 @@ import { SqliteDatabase } from "./database.ts";
 import { smtpTransport } from "./smtp.ts";
 import { session, verifySession, passwordMatches } from "./auth.ts";
 import { handleApi, processCampaign } from "../src/core/api.ts";
+import { createBouncePoller, imapOptionsFromEnv } from "./imap.ts";
 import type { Context } from "../src/core/types.ts";
 import {
   bestLocale,
@@ -147,7 +148,7 @@ const server = createServer(async (req, res) => {
         "content-type": "application/json",
         "cache-control": "no-store",
       });
-      res.end(JSON.stringify({ status: "ok", version: "0.2.0-alpha.1" }));
+      res.end(JSON.stringify({ status: "ok", version: "0.2.0-alpha.2" }));
       return;
     }
     if (url.pathname === "/auth/login" && req.method === "POST") {
@@ -275,13 +276,28 @@ const timer = setInterval(async () => {
     processing = false;
   }
 }, 10000);
-server.listen(Number(process.env.PORT || 3000), "0.0.0.0", () =>
+const imapOptions = imapOptionsFromEnv();
+const bouncePoller = imapOptions
+  ? createBouncePoller({
+      options: imapOptions,
+      context,
+      log: (line, detail) => console.log(line, JSON.stringify(detail || {})),
+    })
+  : null;
+server.listen(Number(process.env.PORT || 3000), "0.0.0.0", () => {
   console.log(
     `Nếp Mail listening; mode=${live ? "direct-smtp" : "capture"}; live delivery=${live}`,
-  ),
-);
+  );
+  if (bouncePoller) {
+    console.log(
+      `Bounce IMAP poller active: ${imapOptions!.user}@${imapOptions!.host}/${imapOptions!.mailbox} every ${imapOptions!.intervalMs / 1000}s`,
+    );
+    bouncePoller.start();
+  }
+});
 function shutdown() {
   clearInterval(timer);
+  bouncePoller?.stop();
   server.close(() => {
     db.close();
     process.exit(0);

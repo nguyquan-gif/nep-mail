@@ -62,6 +62,9 @@ Date: 22 October 2026 (Asia/Ho_Chi_Minh). This report separates source, runtime 
     members or send a campaign.
 24. DKIM private keys are returned once and never persisted; DNS checks reject
     malformed domain and selector input.
+25. The IMAP poller reads unseen mail only, flags every message seen (including
+    non-bounces), suppresses hard bounces instance-wide unless scoped, ignores
+    soft bounces, and turns a dead connection into a log line.
 
 ## Localisation caveat
 
