@@ -169,7 +169,8 @@ and [docs/RELEASE.md](docs/RELEASE.md).
 [Localisation](docs/I18N.md) · [Product contract](docs/01-BA.md) ·
 [Design & architecture](docs/02-DESIGN.md) ·
 [Integration contract](docs/INTEGRATIONS.md) ·
-[Test and release status](docs/TEST-REPORT.md) · [Security](SECURITY.md)
+[Test and release status](docs/TEST-REPORT.md) · [Launch kit](docs/LAUNCH.md) ·
+[Security](SECURITY.md)
 
 ## License
 
