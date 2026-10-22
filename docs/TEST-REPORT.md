@@ -8,7 +8,7 @@ Date: 22 October 2026 (Asia/Ho_Chi_Minh). This report separates source, runtime 
 | Design                             | Six modules, tokens, responsive tables, dialogs and email preview                                                 | Implemented                    |
 | TypeScript                         | `tsc --noEmit`                                                                                                    | PASS                           |
 | Self-host frontend                 | Vite production build                                                                                             | PASS                           |
-| Automated tests                    | 36 Node tests: core, auth, HTTP, SQLite backup, loopback SMTP, localisation, signup, DNS/DKIM, bounces            | PASS                           |
+| Automated tests                    | 41 Node tests: core, auth, HTTP, SQLite backup, SMTP, localisation, signup, DNS/DKIM, bounces, IMAP               | PASS                           |
 | SMTP local                         | Nodemailer submitted real multipart MIME over a loopback SMTP fixture; unsubscribe headers inspected              | PASS                           |
 | HTTP auth and persistence          | Real Node HTTP login/session, forged identity rejected, workspace/contact writes and static app                   | PASS                           |
 | Browser UI                         | Isolated synthetic-identity fixture; desktop dashboard/editor/preflight and responsive frames 375/768/1024/1440   | Checked                        |
@@ -19,15 +19,16 @@ Date: 22 October 2026 (Asia/Ho_Chi_Minh). This report separates source, runtime 
 | DNS / DKIM                         | SPF, DKIM, DMARC and MX verdicts from injected DNS answers; RSA-2048 key and TXT record generation                | PASS                           |
 | Bounce ingestion                   | RFC 3464 DSN and RFC 5965 ARF parsing; hard/complaint suppress, soft never does; API key required                 | PASS                           |
 | Docker Compose                     | Real `docker compose up --build` on the authoring machine; app, SQLite volume and Mailpit healthy                 | PASS                           |
+| IMAP bounce poller                 | Stub-client tests plus a real run against GreenMail 2.1.14: SMTP DSN → IMAP fetch → suppression, no replay        | PASS                           |
 | Responsive overflow                | Root scroll width equals client width in all four frames after fixing hidden table label positioning              | PASS for overview              |
 | Browser production sign-in         | Operator login over HTTP, session reused in a headless browser; dashboard, settings and editor read in en/vi/fr   | PASS for layout and strings    |
 | SQLite recovery                    | Online backup restored a committed row and passed `integrity_check`                                               | PASS at unit/integration scope |
 | Windows PowerShell                 | Launcher provided; no Windows executor available                                                                  | NOT RUN                        |
-| Docker / Mailpit / Postfix         | Compose definitions and Postfix configuration supplied; Docker executable absent in authoring environment         | NOT RUN                        |
+| Docker / Mailpit / Postfix         | `docker compose up --build` verified; app, SQLite volume and Mailpit healthy; Postfix relay config not exercised  | PASS for capture stack         |
 | Internet SMTP / Gmail / Outlook    | No owned mail domain, DKIM/private IP infrastructure or live recipient was configured                             | NOT RUN                        |
 | HR / Business deployed integration | Receiver contract and replay/revocation tests only; other deployments untouched                                   | NOT CONNECTED                  |
 | Public GitHub CI                   | Workflow supplied; no new GitHub repository created by this run                                                   | NOT RUN                        |
-| Public source / commercial release | License decision, audit and operational release gates remain                                                      | NOT RELEASED                   |
+| Public source / commercial release | AGPL-3.0-or-later published with NOTICE; Internet-delivery and security gates remain                              | LICENSED, NOT AUDITED          |
 
 ## Automated invariants covered
 
@@ -77,4 +78,5 @@ language, see `docs/I18N.md`.
 
 The production dependency audit reported zero known advisories for the locked production packages on 22 October 2026. This does not audit development tooling, container images or application logic. The portable source installs independently; the lockfile pins PostCSS 8.5.23 to respect the configured seven-day package age policy.
 
-No real contacts, credentials from other projects, or Internet email deliveries were used. A successful build or SMTP acceptance must not be described as delivery to inbox or production release.
+No real contacts, credentials from other projects, or Internet email deliveries were used. A successful build or SMTP acceptance must not be described as delivery to inbox or production release. 26. No command is issued while a FETCH response is still streaming — the fake
+client rejects that ordering because real IMAP servers drop the connection.

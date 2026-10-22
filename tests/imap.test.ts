@@ -78,6 +78,10 @@ const CHATTER = [
 function fakeImap(messages: { uid: number; body: string }[]) {
   const seen = new Set<number>();
   const flags: string[] = [];
+  // IMAP is single-command-at-a-time: issuing STORE while a FETCH response is
+  // still streaming kills the connection on real servers, so the fake enforces
+  // it too.
+  let fetching = false;
   const client: ImapClient = {
     async connect() {},
     async logout() {},
@@ -88,12 +92,19 @@ function fakeImap(messages: { uid: number; body: string }[]) {
       return messages.filter((m) => !seen.has(m.uid)).map((m) => m.uid);
     },
     async *fetch(range) {
-      for (const uid of String(range).split(",").map(Number)) {
-        const message = messages.find((m) => m.uid === uid);
-        if (message) yield { uid, source: Buffer.from(message.body) };
+      fetching = true;
+      try {
+        for (const uid of String(range).split(",").map(Number)) {
+          const message = messages.find((m) => m.uid === uid);
+          if (message) yield { uid, source: Buffer.from(message.body) };
+        }
+      } finally {
+        fetching = false;
       }
     },
     async messageFlagsAdd(range) {
+      if (fetching)
+        throw new Error("Connection not available: STORE during FETCH");
       for (const uid of String(range).split(",").map(Number)) seen.add(uid);
       flags.push(String(range));
       return true;

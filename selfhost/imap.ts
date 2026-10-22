@@ -87,6 +87,8 @@ const defaultFactory = (options: ImapOptions): ImapClient =>
     secure: options.secure,
     auth: { user: options.user, pass: options.pass },
     logger: false,
+    // Polling only: IDLE would hold the connection open and race the next tick.
+    disableAutoIdle: true,
     // A bounce mailbox is low-volume; do not hold a connection for long.
     socketTimeout: 60_000,
   }) as unknown as ImapClient;
@@ -117,21 +119,38 @@ export function createBouncePoller(input: {
       if (!uids.length) return { messages: 0, events: 0, suppressed: 0 };
 
       const raw: string[] = [];
-      for await (const message of client.fetch(
-        uids.join(","),
-        { source: true },
-        { uid: true },
-      )) {
-        const text = message.source
-          ? Buffer.from(message.source as Buffer).toString("utf8")
-          : "";
-        if (text) raw.push(text);
-        // Mark seen even when parsing finds nothing: an unrelated message in the
-        // bounce mailbox must not be re-read on every tick.
-        if (message.uid)
-          await client.messageFlagsAdd(String(message.uid), ["\\Seen"], {
+      // One UID per fetch: servers differ in how they handle long UID sets, and
+      // one unreadable message must not abort the whole tick.
+      for (const uid of uids) {
+        try {
+          // Never issue STORE while the FETCH response is still streaming: the
+          // IMAP protocol is single-command-at-a-time and imapflow drops the
+          // connection otherwise.
+          const bodies: string[] = [];
+          let fetchedUid: number | undefined;
+          for await (const message of client.fetch(
+            String(uid),
+            { source: true },
+            { uid: true },
+          )) {
+            const text = message.source
+              ? Buffer.from(message.source as Buffer).toString("utf8")
+              : "";
+            if (text) bodies.push(text);
+            fetchedUid = message.uid;
+          }
+          raw.push(...bodies);
+          // Mark seen even when parsing finds nothing: an unrelated message in
+          // the bounce mailbox must not be re-read on every tick.
+          await client.messageFlagsAdd(String(fetchedUid ?? uid), ["\\Seen"], {
             uid: true,
           });
+        } catch (error) {
+          log("bounce_fetch_failed", {
+            uid,
+            error: error instanceof Error ? error.message : "unknown",
+          });
+        }
       }
 
       const events = dedupe(raw.flatMap((message) => parseBounce(message)));
