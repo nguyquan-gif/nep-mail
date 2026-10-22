@@ -1,0 +1,39 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  core-and-selfhost:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.19.0"
+      - run: corepack enable
+      - run: corepack pnpm install --frozen-lockfile
+      - run: corepack pnpm run typecheck
+      - run: corepack pnpm run build:selfhost
+      - run: corepack pnpm test
+      - run: cp .env.example .env
+      - run: docker compose config --quiet
+
+  capture-container-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.19.0"
+      - run: node scripts/setup.mjs
+      - run: docker compose config --quiet
+      - run: docker compose up -d --build
+      - run: |
+          for i in $(seq 1 30); do
+            if curl --fail --silent http://localhost:3000/healthz; then exit 0; fi
+            sleep 2
+          done
+          exit 1
+      - run: node --env-file=.env tests/docker-smoke.mjs
+      - if: always()
+        run: docker compose down

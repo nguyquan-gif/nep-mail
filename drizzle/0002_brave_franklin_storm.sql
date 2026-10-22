@@ -1,0 +1,1 @@
+ALTER TABLE `campaigns` ADD `locale` text DEFAULT 'vi' NOT NULL;

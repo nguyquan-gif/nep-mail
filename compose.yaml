@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATA_DIR: /data
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      LIVE_SEND: "false"
+      CAPTURE_MODE: "true"
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - app-data:/data
+    depends_on:
+      - mailpit
+    security_opt:
+      - no-new-privileges:true
+  mailpit:
+    image: axllent/mailpit:v1.27.8
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8025:8025"
+    environment:
+      MP_MAX_MESSAGES: 100
+      MP_DATABASE: /data/mailpit.db
+    volumes:
+      - capture-data:/data
+volumes:
+  app-data:
+  capture-data:

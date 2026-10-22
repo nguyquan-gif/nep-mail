@@ -1,0 +1,24 @@
+Nếp Mail
+Copyright (C) 2026 the Nếp Mail authors
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+
+Third-party components keep their own licences: React and React DOM (MIT),
+Lucide (ISC), Zod (MIT), Nodemailer (MIT-0), TypeScript (Apache-2.0), Vite
+(MIT), Prettier (MIT), Drizzle ORM and Drizzle Kit (Apache-2.0). Postfix and
+Mailpit are distributed as separate container images under their own licences
+and are not part of this source tree.
+
+No Keila source code is included. Nếp Mail is an independent implementation.

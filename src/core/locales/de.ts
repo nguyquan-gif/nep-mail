@@ -1,0 +1,440 @@
+import type { Pack } from "../i18n.ts";
+
+export const de: Pack = {
+  ". Nhập văn bản thuần, hệ thống tự tạo HTML.":
+    ". Klartext rein, sauberes HTML raus.",
+  ". Tối đa 500 dòng mỗi lần.": ". Bis zu 500 Zeilen pro Import.",
+  "/3 bước": "/3 Schritte",
+  "4 MẪU KHỞI ĐẦU": "4 VORLAGEN FÜR DEN START",
+  "80 sự kiện gần nhất": "Die letzten 80 Ereignisse",
+  "API đã có hợp đồng nhận sự kiện. Cần cấu hình ở ứng dụng nguồn.":
+    "Der Ereignis-Vertrag steht. Konfiguration in der Quellanwendung.",
+  "Alpha để kiểm chứng. Chưa phải bản thương mại.":
+    "Eine Alpha als Machbarkeitsbeweis. Keine kommerzielle Version.",
+  "Biên tập viên": "Redakteur",
+  "Biểu mẫu đăng ký, ngày xác nhận…": "Anmeldeformular, Bestätigungsdatum…",
+  "BẠN ĐÃ SẴN SÀNG": "ALLES BEREIT",
+  "Bản alpha hiển thị tối đa 501 liên hệ; xếp hàng giới hạn 500 liên hệ/workspace.":
+    "Die Alpha zeigt bis zu 501 Kontakte und reiht höchstens 500 pro Workspace ein.",
+  "Bản dịch do cộng đồng đóng góp. Chuỗi chưa dịch sẽ hiển thị bằng tiếng Anh, rồi tiếng Việt.":
+    "Übersetzungen werden von der Community gepflegt. Fehlende Texte erscheinen auf Englisch, dann Vietnamesisch.",
+  "Bản nháp": "Entwurf",
+  "Bản riêng tư yêu cầu thêm quyền truy cập ở lớp hosting. API token không tự vượt qua cổng đăng nhập của hosting.":
+    "Der private Build braucht zusätzlich Zugriffskontrolle beim Hosting. Ein API-Token umgeht die Login-Sperre des Hostings nicht.",
+  "Bản thử nghiệm riêng tư": "Private Vorschau",
+  "Bản tin tháng 10": "Newsletter Oktober",
+  "Bản xem riêng tư không mở SMTP": "Die private Vorschau öffnet kein SMTP",
+  "BẮT ĐẦU NHANH HƠN": "SCHNELLER STARTEN",
+  "Bắt đầu với một mẫu gọn gàng, rồi kể câu chuyện của bạn.":
+    "Mit einer klaren Vorlage starten, dann die eigene Geschichte erzählen.",
+  "Bỏ qua": "Übersprungen",
+  "CSV mẫu": "Beispiel-CSV",
+  "Chi tiết chiến dịch": "Kampagnendetails",
+  "Chiến dịch": "Kampagnen",
+  "Chiến dịch bạn tạo sẽ xuất hiện tại đây, từ bản nháp đến khi xử lý.":
+    "Erstellte Kampagnen erscheinen hier – vom Entwurf bis zur Verarbeitung.",
+  "Chiến dịch chờ gửi": "Wartende Kampagnen",
+  "Chiến dịch gần đây": "Letzte Kampagnen",
+  "Chuẩn bị chiến dịch đầu tiên của bạn.": "Die erste Kampagne vorbereiten.",
+  "Chào {{first_name}},\n\nViết điều bạn muốn chia sẻ tại đây…":
+    "Hallo {{first_name}},\n\nHier schreiben, was geteilt werden soll…",
+  "Chưa cấp quyền": "Noch keine Einwilligung",
+  "Chưa cấu hình": "Nicht konfiguriert",
+  "Chưa cấu hình khóa ký hủy nhận":
+    "Der Schlüssel zum Signieren der Abmeldung ist nicht konfiguriert",
+  "Chưa cấu hình địa chỉ gửi": "Die Absenderadresse ist nicht konfiguriert",
+  "Chưa kết nối SMTP tự vận hành": "Noch keine eigene SMTP-Verbindung",
+  "Chưa kết nối hệ thống thực": "Nicht mit einem Live-System verbunden",
+  "Chưa mở gửi Internet": "Versand ins Internet ist aus",
+  "Chưa tìm thấy chiến dịch": "Keine Kampagne gefunden",
+  "Chưa xác nhận đến inbox": "Zustellung in den Posteingang nicht bestätigt",
+  "Chưa xếp hàng": "Noch nicht eingereiht",
+  "Chặn gửi": "Versand blockieren",
+  "Chặn gửi đến {email}? Địa chỉ này sẽ bị loại khỏi những lần xử lý tiếp theo.":
+    "Versand an {email} blockieren? Die Adresse wird bei künftigen Läufen ausgeschlossen.",
+  "Chế độ gửi Internet chưa bật": "Versand ins Internet ist nicht aktiviert",
+  "Chế độ hiện tại": "Aktueller Modus",
+  "Chỉ xem": "Betrachter",
+  "Chọn mẫu, viết nội dung, xem trước.":
+    "Vorlage wählen, Inhalt schreiben, Vorschau ansehen.",
+  "Chọn tệp CSV": "CSV-Datei wählen",
+  "Chọn workspace": "Workspace wählen",
+  "Chờ xử lý": "Ausstehend",
+  "Cài đặt": "Einstellungen",
+  "Cá nhân hóa:": "Personalisierung:",
+  "Có trong bộ self-host": "Im Self-Host-Paket enthalten",
+  "Cấu hình self-host và xác thực tên miền.":
+    "Self-Hosting einrichten und Domain verifizieren.",
+  "Cần URL HTTPS công khai cho hủy nhận":
+    "Für Abmeldungen ist eine öffentliche HTTPS-URL nötig",
+  "Cần đối soát": "Abgleich nötig",
+  "Cập nhật": "Aktualisiert",
+  "Cột bắt buộc:": "Pflichtspalten:",
+  "Danh bạ": "Kontakte",
+  "Danh bạ bắt đầu từ sự đồng ý": "Eine Kontaktliste beginnt mit Einwilligung",
+  "Danh bạ, nội dung và hàng đợi đã có chỗ. Gửi Internet đang tắt.":
+    "Kontakte, Inhalte und Warteschlange stehen. Versand ins Internet ist aus.",
+  "Dòng xem trước": "Vorschautext",
+  "Dùng mẫu": "Vorlage verwenden",
+  "Dữ liệu của bạn.\nHạ tầng do bạn làm chủ.":
+    "Deine Daten.\nDeine Infrastruktur.",
+  "Email thành viên": "E-Mail des Mitglieds",
+  "Email được tạo bằng HTML gọn nhẹ, có phiên bản văn bản và liên kết hủy nhận. Nội dung mẫu cần được bạn chỉnh trước khi gửi.":
+    "E-Mails entstehen mit schlankem HTML, Textversion und Abmeldelink. Beispieltext vor dem Versand anpassen.",
+  "Giao diện đổi ngay khi chọn. Email dùng ngôn ngữ riêng của từng chiến dịch, kể cả trang hủy nhận.":
+    "Die Oberfläche wechselt sofort. Jede Kampagne hat ihre eigene E-Mail-Sprache, auch die Abmeldeseite.",
+  "Gửi Internet đang tắt. Thư ở trạng thái chờ cho đến khi cấu hình sẵn sàng.":
+    "Versand ins Internet ist aus. Nachrichten warten, bis die Konfiguration steht.",
+  "Gửi vào hộp thư thử": "An Testpostfach senden",
+  "Gửi đi câu chuyện đầu tiên": "Die erste Geschichte senden",
+  "Gửi điều có ý nghĩa.": "Etwas Bedeutungsvolles senden.",
+  "Hiểu người nhận. Gửi đúng người, đúng sự đồng ý.":
+    "Die Leser kennen. An die richtigen Menschen senden, mit echter Einwilligung.",
+  "Hướng dẫn & trạng thái": "Anleitung & Status",
+  "Hạ tầng gửi tự vận hành": "Eigener Versand",
+  "Họ và tên": "Vollständiger Name",
+  "Hộp thư thử cục bộ": "Lokales Testpostfach",
+  Hủy: "Abbrechen",
+  "Hủy chiến dịch": "Kampagne abbrechen",
+  "Hủy những thư chưa được SMTP tiếp nhận?":
+    "Nachrichten abbrechen, die SMTP noch nicht angenommen hat?",
+  "Import không kích hoạt lại địa chỉ đã hủy nhận. Email marketing chỉ chọn liên hệ có nguồn đồng ý.":
+    "Importe reaktivieren nie eine abgemeldete Adresse. Marketing-E-Mails gehen nur an Kontakte mit dokumentierter Einwilligung.",
+  "KHÔNG GIAN LÀM VIỆC": "WORKSPACE",
+  "KHỞI ĐẦU MỖI KẾT NỐI": "JEDE VERBINDUNG BEGINNT HIER",
+  "Key chỉ được hiển thị một lần. Lưu ở máy chủ của ứng dụng nguồn.":
+    "Der Key wird nur einmal angezeigt. Auf dem Server der Quellanwendung speichern.",
+  "Key sẽ không hiển thị lại sau khi đóng cửa sổ này.":
+    "Der Key wird nach dem Schließen dieses Fensters nicht erneut angezeigt.",
+  "Khám phá mẫu email": "E-Mail-Vorlagen ansehen",
+  "Không cần API key gửi mail": "Kein API-Key für den Versand nötig",
+  "Không thể hoàn tất yêu cầu": "Anfrage konnte nicht abgeschlossen werden",
+  "Kiểm tra & nhập": "Prüfen & importieren",
+  "Kiểm tra & xếp hàng": "Prüfen & einreihen",
+  "Kiểm tra nội dung và người nhận trước mỗi lần gửi.":
+    "Inhalt und Empfänger vor jedem Versand prüfen.",
+  "Kiểm tra thiết lập": "Einrichtung prüfen",
+  "Kết nối hệ sinh thái Nếp, giữ quyền kiểm soát dữ liệu.":
+    "Das Nếp-Ökosystem anbinden und die Daten unter Kontrolle behalten.",
+  "Kết nối máy chủ SMTP": "SMTP-Server verbinden",
+  "Kết nối theo cách của bạn": "Auf eigene Weise anbinden",
+  "Liên hệ": "Kontakt",
+  "Liên hệ đã đồng ý nhận email marketing":
+    "Dieser Kontakt hat Marketing-E-Mails zugestimmt",
+  "Lưu API key của bạn": "API-Key speichern",
+  "Lưu bản nháp": "Entwurf speichern",
+  "Lưu bản nháp để cập nhật kiểm tra người nhận.":
+    "Entwurf speichern, um die Empfängerprüfung zu aktualisieren.",
+  "Lưu liên hệ": "Kontakt speichern",
+  "Lưu nội dung trước khi xếp hàng.": "Inhalt vor dem Einreihen speichern.",
+  "Lưu phân quyền": "Zugriff speichern",
+  "Lịch xử lý tự động": "Automatische Verarbeitung",
+  "Lọc trạng thái chiến dịch": "Kampagnen nach Status filtern",
+  "Lọc trạng thái liên hệ": "Kontakte nach Status filtern",
+  "Marketing · cần đồng ý": "Marketing · Einwilligung nötig",
+  "Máy chủ gửi đã sẵn sàng.": "Der Versandserver ist bereit.",
+  "Mẫu email": "Vorlagen",
+  "Mỗi kết nối tốt đẹp\nbắt đầu bằng một lời chào.":
+    "Jede gute Verbindung\nbeginnt mit einem Hallo.",
+  "Mỗi workspace có danh bạ, chiến dịch và quyền truy cập riêng.":
+    "Jeder Workspace hat eigene Kontakte, Kampagnen und Zugriffe.",
+  "MỘT KHỞI ĐẦU CHỈN CHU": "EIN SORGFÄLTIGER ANFANG",
+  "Một câu chuyện đang chờ được kể": "Eine Geschichte, die erzählt werden will",
+  "Một dòng ngắn xuất hiện bên cạnh tiêu đề":
+    "Eine kurze Zeile neben dem Betreff",
+  "Một khung thư đẹp.\nMột câu chuyện của riêng bạn.":
+    "Ein schöner Rahmen.\nDie eigene Geschichte.",
+  "Một liên hệ": "Ein Kontakt",
+  "Một nơi để giữ liên lạc, kể câu chuyện và nuôi dưỡng mối quan hệ.":
+    "Ein Ort für Kontakt, Geschichten und wachsende Beziehungen.",
+  Mở: "Öffnen",
+  Nguồn: "Quelle",
+  "Nguồn đồng ý": "Einwilligungsquelle",
+  "Ngôn ngữ": "Sprache",
+  "Ngôn ngữ email": "E-Mail-Sprache",
+  "Ngôn ngữ giao diện": "Sprache der Oberfläche",
+  "Nhóm email": "E-Mail-Kategorie",
+  "Nhập CSV": "CSV importieren",
+  "Nhập liên hệ từ CSV": "Kontakte aus CSV importieren",
+  "Nhật ký hoạt động": "Aktivitätsprotokoll",
+  "Những kết nối, được chăm chút.": "Verbindungen, sorgfältig gepflegt.",
+  "Nếp Mail": "Nếp Mail",
+  "Nếp Mail kết nối SMTP do bạn vận hành. Bộ self-host có Postfix gửi trực tiếp, không yêu cầu tài khoản hay API key dịch vụ gửi thuê ngoài.":
+    "Nếp Mail spricht mit SMTP, das selbst betrieben wird. Das Self-Host-Paket enthält Postfix für den Direktversand und braucht kein Konto und keinen API-Key eines bezahlten Versanddienstes.",
+  "Nếp Mail · Tổng quan": "Nếp Mail · Übersicht",
+  "Nếu có dòng lỗi, toàn bộ lần nhập bị từ chối. Liên hệ trùng được cập nhật tên và tag; không khôi phục quyền nhận của địa chỉ đã chặn.":
+    "Eine fehlerhafte Zeile lehnt den ganzen Import ab. Dubletten aktualisieren Name und Tags; eine blockierte Adresse erhält keine Einwilligung zurück.",
+  "NỘI DUNG EMAIL": "E-MAIL-INHALT",
+  "Nội bộ": "Intern",
+  "Nội dung": "Inhalt",
+  "Nội dung CSV": "CSV-Inhalt",
+  "Phần mềm miễn phí; tên miền, máy chủ và kết nối Internet do bạn chuẩn bị. Khả năng đến inbox phụ thuộc cấu hình và uy tín gửi.":
+    "Die Software ist kostenlos; Domain, Server und Internetanbindung müssen selbst bereitgestellt werden. Die Zustellung in den Posteingang hängt von Konfiguration und Absenderruf ab.",
+  "Quay lại": "Zurück",
+  "Quyền nhận marketing": "Marketing-Einwilligung",
+  "Quản lý workspace, quyền truy cập và hạ tầng gửi.":
+    "Workspaces, Zugriffe und Versandinfrastruktur verwalten.",
+  "Quản trị viên": "Administrator",
+  "SMTP tự vận hành": "Eigenes SMTP",
+  "SMTP đã nhận": "SMTP angenommen",
+  "SMTP đã tiếp nhận": "Von SMTP angenommen",
+  "Sao chép key": "Key kopieren",
+  "Self-host alpha sử dụng một tài khoản quản trị. Đăng nhập nhiều tài khoản độc lập cần adapter xác thực bổ sung.":
+    "Die Self-Host-Alpha nutzt ein einziges Administratorkonto. Unabhängige Mehrbenutzer-Anmeldung braucht einen zusätzlichen Auth-Adapter.",
+  "Self-host: mỗi 10 giây khi bật gửi":
+    "Self-Host: alle 10 Sekunden, solange der Versand läuft",
+  "Soạn điều muốn chia sẻ": "Schreiben, was geteilt werden soll",
+  "Sẵn sàng": "Bereit",
+  "Sẵn sàng để gửi": "Bereit zum Senden",
+  "Số liệu workspace": "Workspace-Kennzahlen",
+  "Tag người nhận": "Empfänger-Tag",
+  "Thao tác": "Aktionen",
+  "Thu hồi": "Widerrufen",
+  "Thu hồi key “{name}”? Ứng dụng đang dùng key sẽ ngừng đồng bộ.":
+    "Key „{name}“ widerrufen? Apps, die ihn nutzen, stellen die Synchronisierung ein.",
+  "Thành viên & phân quyền": "Mitglieder & Rollen",
+  "Thêm hoặc nhập liên hệ": "Kontakte hinzufügen oder importieren",
+  "Thêm liên hệ": "Kontakt hinzufügen",
+  "Thêm liên hệ và ghi nhận nguồn đồng ý.":
+    "Kontakte hinzufügen und die Herkunft der Einwilligung erfassen.",
+  "Thêm từng liên hệ hoặc nhập CSV với thông tin nguồn đăng ký.":
+    "Kontakte einzeln hinzufügen oder eine CSV mit Anmeldequelle importieren.",
+  "Thông tin nội bộ": "Interne Mitteilung",
+  "Thời gian gửi": "Sendezeit",
+  "Thử lại": "Erneut versuchen",
+  "Thử với dữ liệu mẫu": "Mit Beispieldaten testen",
+  "Tiêu đề email": "E-Mail-Betreff",
+  "Tiêu đề email của bạn": "Betreff der E-Mail",
+  "Token chỉ được gửi sự kiện danh bạ trong workspace này. Hệ thống nguồn không được tự cấp quyền nhận marketing. Mỗi sự kiện cần một ID duy nhất để chống xử lý trùng.":
+    "Das Token sendet nur Kontaktereignisse in diesem Workspace. Ein Quellsystem kann keine Marketing-Einwilligung selbst erteilen. Jedes Ereignis braucht eine eindeutige ID, damit Wiederholungen ignoriert werden.",
+  "Trong workspace hiện tại": "Im aktuellen Workspace",
+  "Trạng thái": "Status",
+  "Tách biệt dữ liệu": "Getrennte Daten",
+  "Tên chiến dịch": "Kampagnenname",
+  "Tên kết nối": "Name der Verbindung",
+  "Tên workspace": "Workspace-Name",
+  "Tìm chiến dịch": "Kampagnen suchen",
+  "Tìm liên hệ": "Kontakte suchen",
+  "Tìm tên, email hoặc tag…": "Name, E-Mail oder Tag suchen…",
+  "Tìm tên, tiêu đề email…": "Name oder Betreff suchen…",
+  "Tích hợp": "Integrationen",
+  "Tôi đã lưu key": "Key gespeichert",
+  "Tạo API key": "API-Key erstellen",
+  "Tạo API key riêng cho Nếp HR, Nếp Business hoặc một ứng dụng khác.":
+    "Einen eigenen API-Key für Nếp HR, Nếp Business oder eine andere App erstellen.",
+  "Tạo chiến dịch": "Kampagne erstellen",
+  "Tạo chiến dịch mới": "Neue Kampagne",
+  "Tạo chiến dịch đầu tiên hoặc chọn một mẫu email để bắt đầu.":
+    "Erste Kampagne erstellen oder mit einer E-Mail-Vorlage starten.",
+  "Tạo key": "Key erstellen",
+  "Tạo lúc": "Erstellt",
+  "Tạo workspace": "Workspace erstellen",
+  "Tạo workspace mới": "Neuen Workspace erstellen",
+  "Tạo workspace đầu tiên": "Ersten Workspace erstellen",
+  "Tạo workspace đầu tiên để quản lý danh bạ, soạn bản tin và chuẩn bị chiến dịch email của bạn.":
+    "Ersten Workspace erstellen, um Kontakte zu verwalten, Newsletter zu schreiben und E-Mail-Kampagnen vorzubereiten.",
+  "Tất cả liên hệ": "Alle Kontakte",
+  "Tất cả trạng thái": "Alle Status",
+  "Tệp tối đa 500 KB": "Die Datei darf höchstens 500 KB groß sein",
+  "Tổng liên hệ": "Kontakte gesamt",
+  "Tổng quan": "Übersicht",
+  "Từ ý tưởng đầu tiên đến từng email được gửi đi.":
+    "Von der ersten Idee bis zur letzten gesendeten E-Mail.",
+  "Vai trò": "Rolle",
+  "Ví dụ: Công ty của bạn": "Zum Beispiel: Musterfirma",
+  "Workspace của bạn": "Dein Workspace",
+  "Workspace mới đã sẵn sàng": "Der neue Workspace ist bereit",
+  "XEM TRƯỚC": "VORSCHAU",
+  "Xem di động": "Mobile Ansicht",
+  "Xem thư viện mẫu": "Vorlagenbibliothek ansehen",
+  "Xem thử riêng tư": "Private Vorschau",
+  "Xem trước nội dung email": "E-Mail-Inhalt in der Vorschau ansehen",
+  "Xem tất cả": "Alle ansehen",
+  "Xác nhận": "Bestätigen",
+  "Xác nhận chốt người nhận": "Empfängerliste bestätigen",
+  "Xác nhận thao tác": "Aktion bestätigen",
+  "Xác nhận xếp hàng": "Bestätigen und einreihen",
+  "Xây danh bạ của bạn": "Kontaktliste aufbauen",
+  "Xử lý 10 thư": "10 Nachrichten verarbeiten",
+  "email.footer": "Gesendet von {brand} mit Nếp Mail.",
+  "email.textFooter": "Abmelden: {url}",
+  "email.unsubscribe": "Abmelden",
+  nếp: "nếp",
+  "nếp mail": "nếp mail",
+  "unsub.confirm": "Abmeldung bestätigen",
+  "unsub.done": "Abmeldung erfolgt",
+  "unsub.doneBody": "Die Anfrage wurde gespeichert.",
+  "unsub.intro":
+    "Bestätigen, dass keine E-Mails aus diesem Workspace mehr empfangen werden sollen.",
+  "unsub.title": "Abmelden",
+  "{n} chiến dịch": "{n} Kampagnen",
+  "{n} chiến dịch|one": "{n} Kampagne",
+  "{n} liên hệ": "{n} Kontakte",
+  "{n} liên hệ|one": "{n} Kontakt",
+  "{n} liên hệ bị loại": "{n} Kontakte ausgeschlossen",
+  "{n} liên hệ bị loại|one": "{n} Kontakt ausgeschlossen",
+  "{n} liên hệ đủ điều kiện sẽ được chốt thành danh sách gửi. Nội dung sẽ khóa sau khi xếp hàng.":
+    "{n} geeignete Kontakte werden als Sendeliste festgeschrieben. Der Inhalt ist nach dem Einreihen gesperrt.",
+  "{n} liên hệ đủ điều kiện sẽ được chốt thành danh sách gửi. Nội dung sẽ khóa sau khi xếp hàng.|one":
+    "{n} geeigneter Kontakt wird als Sendeliste festgeschrieben. Der Inhalt ist nach dem Einreihen gesperrt.",
+  "{n} ngôn ngữ": "{n} Sprachen",
+  "{n} người nhận đủ điều kiện": "{n} geeignete Empfänger",
+  "{n} người nhận đủ điều kiện|one": "{n} geeigneter Empfänger",
+  "· bỏ trống để xử lý ngay khi sẵn sàng":
+    "· leer lassen, um sofort zu verarbeiten",
+  "· phân cách bằng dấu phẩy": "· durch Kommas getrennt",
+  "Đang chờ gửi": "Eingereiht",
+  "Đang hiệu lực": "Aktiv",
+  "Đang hoạt động": "Aktiv",
+  "Đang hoạt động và có nguồn đồng ý": "Aktiv mit dokumentierter Einwilligung",
+  "Đang tải workspace…": "Workspace wird geladen…",
+  "Đang xử lý": "In Verarbeitung",
+  "Điều hướng chính": "Hauptnavigation",
+  "Điều muốn gửi đến {{first_name}}": "Was {{first_name}} erhalten soll",
+  "Đã bật": "Aktiviert",
+  "Đã chặn": "Blockiert",
+  "Đã chặn liên hệ": "Kontakt blockiert",
+  "Đã chốt danh sách người nhận": "Empfängerliste festgeschrieben",
+  "Đã có lõi danh bạ, chiến dịch, hàng đợi, phân quyền và hợp đồng tích hợp. Các cổng còn thiếu gồm kiểm chứng SMTP ra Internet, thu nhận bounce/complaint, khôi phục backup và rà soát bảo mật độc lập. Giấy phép mở nguồn cần được chốt trước khi công khai repo.":
+    "Der Kern aus Kontakten, Kampagnen, Warteschlange, Rollen und Integrationsverträgen steht. Offene Punkte: SMTP-Prüfung ins Internet, Annahme von Bounces und Beschwerden, Restore-Tests und eine unabhängige Sicherheitsprüfung. Die Open-Source-Lizenz muss vor der Veröffentlichung des Repos geklärt sein.",
+  "Đã gửi vào hộp thư thử cục bộ": "An das lokale Testpostfach gesendet",
+  "Đã hủy": "Abgebrochen",
+  "Đã hủy chiến dịch": "Kampagne abgebrochen",
+  "Đã hủy nhận": "Abgemeldet",
+  "Đã lưu bản nháp": "Entwurf gespeichert",
+  "Đã lưu liên hệ": "Kontakt gespeichert",
+  "Đã lưu phân quyền. Người dùng còn cần được cấp quyền truy cập ở lớp hosting.":
+    "Zugriff gespeichert. Die Person braucht zusätzlich Zugang beim Hosting.",
+  "Đã sao chép API key": "API-Key kopiert",
+  "Đã thu hồi": "Widerrufen",
+  "Đã thu hồi API key": "API-Key widerrufen",
+  "Đã tạo 6 liên hệ tổng hợp. Không gửi ra Internet.":
+    "Sechs Beispielkontakte erstellt. Es wird nichts ins Internet gesendet.",
+  "Đã xếp hàng {n} người nhận. Gửi chỉ chạy khi cấu hình sẵn sàng.":
+    "{n} Empfänger eingereiht. Der Versand startet, sobald die Konfiguration steht.",
+  "Đã xử lý": "Verarbeitet",
+  "Đã xử lý một đợt gửi": "Ein Versandstapel verarbeitet",
+  "Đã xử lý {rows} dòng, {unique} email riêng biệt":
+    "{rows} Zeilen verarbeitet, {unique} eindeutige Adressen",
+  "Đã đồng ý": "Eingewilligt",
+  Đóng: "Schließen",
+  "Đóng thông báo": "Hinweis schließen",
+  "Đăng nhập": "Anmelden",
+  "Đăng xuất": "Abmelden",
+  "ĐƯỢC GỬI VỚI SỰ CHĂM CHÚT": "MIT SORGFALT GESENDET",
+  "Đến nội dung chính": "Zum Inhalt springen",
+  "Đến: {name}": "An: {name}",
+  "Để sau": "Später",
+  "Để trống: tất cả đủ điều kiện": "Leer lassen: alle Berechtigten",
+  "Địa chỉ email": "E-Mail-Adresse",
+  "Địa chỉ gửi": "Absenderadresse",
+  "Địa chỉ tổng hợp · Liên kết hủy nhận chỉ là bản xem trước":
+    "Beispieladresse · der Abmeldelink ist nur eine Vorschau",
+  "Đồng bộ danh bạ Nếp HR": "Nếp-HR-Verzeichnis synchronisieren",
+  "Đồng bộ danh bạ nhân sự và nguồn dữ liệu cho bản tin nội bộ.":
+    "Mitarbeiterverzeichnis und Datenquellen für interne Newsletter synchronisieren.",
+  "Đồng bộ khách hàng để chuẩn bị chiến dịch chăm sóc và marketing.":
+    "Kunden synchronisieren, um Betreuungs- und Marketingkampagnen vorzubereiten.",
+  "Đồng ý nhận marketing": "Marketing-Einwilligung",
+  "Độc lập. Tự vận hành. Không dịch vụ gửi bắt buộc.":
+    "Unabhängig. Selbst gehostet. Kein Pflicht-Versanddienst.",
+  "Ứng dụng khác": "Andere App",
+  "Ứng dụng nguồn": "Quellanwendung",
+  "Đăng nhập Nếp Mail": "Bei Nếp Mail anmelden",
+  "Không gian email của bạn.": "Ihr E-Mail-Arbeitsbereich.",
+  "Mật khẩu quản trị": "Admin-Passwort",
+  "Mật khẩu không đúng": "Falsches Passwort",
+  "Vui lòng thử lại sau 10 phút": "Bitte in 10 Minuten erneut versuchen.",
+  "Biểu mẫu công khai không cần đăng nhập: người đọc nhập tên và email, nhận thư xác nhận, rồi bấm một liên kết. Chỉ sau đó liên hệ mới được tính là đồng ý.":
+    "Ein öffentliches Formular braucht kein Konto: Leserinnen und Leser tragen Namen und E-Mail-Adresse ein, erhalten eine Bestätigungsmail und klicken einen Link. Erst danach gilt der Kontakt als einverstanden.",
+  "Biểu mẫu này hiện không nhận đăng ký.":
+    "Dieses Formular nimmt derzeit keine Anmeldungen an.",
+  "Biểu mẫu trên website, ngày xác nhận": "Website-Formular, Bestätigungsdatum",
+  "Biểu mẫu đăng ký": "Anmeldeformulare",
+  "Bản ghi MX": "MX-Eintrag",
+  "Bản tin hàng tháng": "Monatlicher Newsletter",
+  "Chào {name},\n\nXác nhận địa chỉ email của bạn để nhận tin từ {brand}:\n{url}\n\nNếu bạn không đăng ký, hãy bỏ qua email này. Liên kết hết hạn sau 48 giờ.":
+    "Hallo {name},\n\nbestätigen Sie Ihre E-Mail-Adresse, um Nachrichten von {brand} zu erhalten:\n{url}\n\nFalls Sie sich nicht angemeldet haben, ignorieren Sie diese E-Mail. Der Link läuft nach 48 Stunden ab.",
+  "Chính sách chưa đủ mạnh": "Richtlinie ist nicht streng genug",
+  "Chính sách p=none": "Richtlinie ist p=none",
+  "Chúng tôi gửi email hữu ích, không spam. Bạn có thể hủy nhận bất cứ lúc nào.":
+    "Wir senden nützliche E-Mails, niemals Spam. Sie können sich jederzeit abmelden.",
+  "Chúng tôi lưu nguồn đồng ý của bạn và chỉ gửi email marketing sau khi bạn xác nhận.":
+    "Wir halten fest, woher Ihre Einwilligung stammt, und versenden Marketing-E-Mails erst nach Ihrer Bestätigung.",
+  "Chúng tôi đã gửi liên kết xác nhận tới {email}. Mở liên kết để hoàn tất đăng ký.":
+    "Wir haben einen Bestätigungslink an {email} gesendet. Öffnen Sie ihn, um die Anmeldung abzuschließen.",
+  "Chưa có biểu mẫu nào. Tạo một biểu mẫu để nhận đăng ký có xác nhận.":
+    "Noch keine Formulare. Legen Sie eines an, um bestätigte Anmeldungen zu sammeln.",
+  "Chưa có bản ghi": "Eintrag fehlt",
+  "Chưa sẵn sàng": "Noch nicht bereit",
+  "Chưa thể gửi email xác nhận":
+    "Bestätigungsmail kann noch nicht gesendet werden",
+  "Chờ gửi": "Wartet auf Versand",
+  "Chờ xác nhận": "Wartet auf Bestätigung",
+  "Có nhiều bản ghi SPF": "Mehrere SPF-Einträge",
+  "Cảm ơn bạn. Bạn sẽ nhận email từ {brand}.":
+    "Vielen Dank. Sie erhalten Nachrichten von {brand}.",
+  "Cảnh báo": "Warnung",
+  DKIM: "DKIM",
+  DMARC: "DMARC",
+  "Double opt-in: liên hệ chỉ nhận marketing sau khi bấm xác nhận trong email. Người đăng ký không cần tài khoản.":
+    "Double-Opt-in: Ein Kontakt erhält Marketing erst nach dem Klick auf den Bestätigungslink. Abonnenten brauchen kein Konto.",
+  "Email chưa hợp lệ.": "Diese E-Mail-Adresse ist ungültig.",
+  "Giá trị TXT": "TXT-Wert",
+  "Khoá DKIM mới": "Neuer DKIM-Schlüssel",
+  "Khoá công khai rỗng": "Der öffentliche Schlüssel ist leer",
+  "Khoá riêng DKIM chỉ hiển thị một lần và không được lưu trong cơ sở dữ liệu. Đặt nó vào tệp mà DKIM_PRIVATE_KEY_FILE trỏ tới.":
+    "Der private DKIM-Schlüssel wird nur einmal angezeigt und nie in der Datenbank gespeichert. Legen Sie ihn in der Datei ab, auf die DKIM_PRIVATE_KEY_FILE zeigt.",
+  "Kiểm tra DNS": "DNS prüfen",
+  "Kiểm tra SPF, DKIM và DMARC trước khi bật gửi ra Internet. Kết quả đọc trực tiếp từ DNS công khai.":
+    "Prüfen Sie SPF, DKIM und DMARC, bevor Sie den Versand ins Internet aktivieren. Die Ergebnisse werden live aus dem öffentlichen DNS gelesen.",
+  "Kiểm tra hộp thư của bạn": "Prüfen Sie Ihr Postfach",
+  "Liên kết xác nhận không hợp lệ hoặc đã hết hạn.":
+    "Dieser Bestätigungslink ist ungültig oder abgelaufen.",
+  "Máy chủ gửi chưa được cấu hình.": "Es ist kein Versandserver konfiguriert.",
+  "Nguồn đồng ý ghi vào liên hệ":
+    "Einwilligungsquelle wird am Kontakt gespeichert",
+  "Quá nhiều lần đăng ký. Vui lòng thử lại sau.":
+    "Zu viele Anmeldeversuche. Bitte später erneut versuchen.",
+  SPF: "SPF",
+  "Sao chép": "Kopieren",
+  "Thiếu -all hoặc ~all": "-all oder ~all fehlt",
+  "Thêm bản ghi TXT dưới đây vào DNS, rồi lưu khoá riêng vào tệp mà DKIM_PRIVATE_KEY_FILE trỏ tới. Khoá không được lưu trong cơ sở dữ liệu và sẽ không hiển thị lại.":
+    "Tragen Sie den folgenden TXT-Eintrag im DNS ein und speichern Sie den privaten Schlüssel in der Datei, auf die DKIM_PRIVATE_KEY_FILE zeigt. Er wird nicht in der Datenbank gespeichert und nicht erneut angezeigt.",
+  "Tên biểu mẫu": "Formularname",
+  "Tên bản ghi": "Eintragsname",
+  "Tên miền & DNS": "Domain & DNS",
+  "Tên miền gửi": "Versanddomain",
+  "Tôi đã lưu": "Ich habe es gespeichert",
+  "Tạo biểu mẫu": "Formular erstellen",
+  "Tạo khoá DKIM": "DKIM-Schlüssel erzeugen",
+  "Tải khoá riêng": "Privaten Schlüssel herunterladen",
+  Xoá: "Löschen",
+  "Xoá biểu mẫu “{name}”? Liên kết công khai sẽ ngừng hoạt động.":
+    "Formular „{name}“ löschen? Der öffentliche Link funktioniert dann nicht mehr.",
+  "Xác nhận đăng ký": "Anmeldung bestätigen",
+  "Xác nhận đăng ký nhận email từ {brand}":
+    "Bestätigen Sie Ihr Abonnement von {brand}",
+  "Xác nhận để nhận email từ {brand}.":
+    "Bestätigen Sie, um E-Mails von {brand} zu erhalten.",
+  "Đã sao chép bản ghi DNS": "DNS-Eintrag kopiert",
+  "Đã sao chép liên kết": "Link kopiert",
+  "Đã tạo biểu mẫu và sao chép liên kết công khai":
+    "Formular erstellt und öffentlicher Link kopiert",
+  "Đã xoá biểu mẫu": "Formular gelöscht",
+  "Đã xác nhận trước đó.": "Bereits bestätigt.",
+  "Đã xác nhận đăng ký": "Anmeldung bestätigt",
+  "Đăng ký": "Anmelden",
+  "Đăng ký nhận email": "E-Mail abonnieren",
+  Đạt: "OK",
+  "Địa chỉ này đã được xác nhận. Bạn không cần làm gì thêm.":
+    "Diese Adresse ist bereits bestätigt. Sie müssen nichts weiter tun.",
+  "Không tìm thấy biểu mẫu": "Formular nicht gefunden",
+  "Đường dẫn biểu mẫu đã tồn tại": "Diese Formularadresse ist bereits vergeben",
+  "Tên miền không hợp lệ": "Diese Domain ist ungültig",
+  "Selector không hợp lệ": "Dieser Selector ist ungültig",
+  "Không tra được DNS. Vui lòng thử lại.":
+    "Die DNS-Abfrage ist fehlgeschlagen. Bitte erneut versuchen.",
+  "Không tìm thấy bounce trong nội dung":
+    "In dieser Nachricht wurde kein Bounce gefunden",
+};

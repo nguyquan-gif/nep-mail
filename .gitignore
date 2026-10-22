@@ -1,0 +1,11 @@
+node_modules/
+selfhost-dist/
+data/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.sqlite*
+*.tsbuildinfo
+coverage/

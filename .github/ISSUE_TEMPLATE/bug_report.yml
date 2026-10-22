@@ -1,0 +1,61 @@
+name: Bug report
+description: Something broke in a self-hosted instance
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Do **not** paste API keys, `SESSION_SECRET`,
+        `UNSUBSCRIBE_SECRET`, real contact lists or raw database files.
+        Security issues belong in the private process described in SECURITY.md.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Actual behaviour, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. docker compose up -d --build
+        2. create a workspace, add a contact with consent
+        3. queue a campaign...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `git describe --tags --always` or the version in package.json
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Sending mode
+      options:
+        - Capture mode (Mailpit, no Internet mail)
+        - Live SMTP via self-host Postfix
+        - Other SMTP relay
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Server output or browser console. Redact addresses and secrets.
+      render: shell
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I ran `pnpm typecheck && pnpm test` on the same commit
+          required: true
+        - label: This report contains no secrets, credentials or real contact data
+          required: true

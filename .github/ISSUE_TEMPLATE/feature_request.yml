@@ -1,0 +1,49 @@
+name: Feature request
+description: Propose a capability or a translation fix
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you unable to do today, and who does it affect?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you propose
+      description: Behaviour, not implementation. Mention the limits you expect.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Contacts and consent
+        - Campaigns and queueing
+        - Signup forms and double opt-in
+        - Deliverability (DNS, DKIM, bounces)
+        - Integrations and API
+        - Interface and translations
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other tools or workarounds, and why they are not enough.
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This does not require a paid delivery service or a hosted account
+          required: false
+        - label: I am willing to open a pull request
+          required: false

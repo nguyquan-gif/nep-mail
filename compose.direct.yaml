@@ -1,0 +1,50 @@
+# Standalone direct SMTP deployment. Requires .env, TLS reverse proxy, DNS and dkim.key.
+# This file is NOT an override for compose.yaml.
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATA_DIR: /data
+      SMTP_HOST: postfix
+      SMTP_PORT: 25
+      CAPTURE_MODE: "false"
+      # LIVE_SEND remains opt-in in .env; this file does not enable it.
+      DKIM_PRIVATE_KEY_FILE: /run/secrets/dkim.key
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - app-data:/data
+      - ./dkim.key:/run/secrets/dkim.key:ro
+    networks:
+      appnet:
+      smtpnet:
+        ipv4_address: 172.30.55.10
+    depends_on:
+      - postfix
+    security_opt:
+      - no-new-privileges:true
+  postfix:
+    build: ops/postfix
+    restart: unless-stopped
+    environment:
+      MAIL_HOSTNAME: ${MAIL_HOSTNAME:?Set MAIL_HOSTNAME}
+      MAIL_DOMAIN: ${MAIL_DOMAIN:?Set MAIL_DOMAIN}
+    volumes:
+      - smtp-queue:/var/spool/postfix
+    networks:
+      appnet:
+      smtpnet:
+        ipv4_address: 172.30.55.20
+    # No SMTP port published on the host; only the app IP can relay.
+networks:
+  appnet:
+  smtpnet:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.30.55.0/24
+volumes:
+  app-data:
+  smtp-queue:

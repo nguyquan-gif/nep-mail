@@ -1,0 +1,8 @@
+# Only the native build tool may run its package installation script.
+strictDepBuilds: true
+allowBuilds:
+  esbuild: true
+minimumReleaseAge: 10080
+minimumReleaseAgeIgnoreMissingTime: false
+overrides:
+  postcss: 8.5.23

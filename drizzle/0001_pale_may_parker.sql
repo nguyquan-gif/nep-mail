@@ -1,0 +1,1 @@
+ALTER TABLE `campaigns` ADD `queue_token` text;

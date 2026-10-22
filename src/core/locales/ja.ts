@@ -1,0 +1,440 @@
+import type { Pack } from "../i18n.ts";
+
+export const ja: Pack = {
+  ". Nhập văn bản thuần, hệ thống tự tạo HTML.":
+    ". プレーンテキストを入力すると、整形された HTML を生成します。",
+  ". Tối đa 500 dòng mỗi lần.": ". 1 回につき最大 500 行。",
+  "/3 bước": "/3 ステップ",
+  "4 MẪU KHỞI ĐẦU": "4 つのスターターテンプレート",
+  "80 sự kiện gần nhất": "最新 80 件のイベント",
+  "API đã có hợp đồng nhận sự kiện. Cần cấu hình ở ứng dụng nguồn.":
+    "イベント受信の契約は準備済みです。ソースアプリ側で設定してください。",
+  "Alpha để kiểm chứng. Chưa phải bản thương mại.":
+    "アイデアを検証するためのアルファ版です。商用リリースではありません。",
+  "Biên tập viên": "編集者",
+  "Biểu mẫu đăng ký, ngày xác nhận…": "登録フォーム、確認日…",
+  "BẠN ĐÃ SẴN SÀNG": "準備が整いました",
+  "Bản alpha hiển thị tối đa 501 liên hệ; xếp hàng giới hạn 500 liên hệ/workspace.":
+    "アルファ版は最大 501 件の連絡先を表示し、キューは 1 ワークスペースあたり 500 件までです。",
+  "Bản dịch do cộng đồng đóng góp. Chuỗi chưa dịch sẽ hiển thị bằng tiếng Anh, rồi tiếng Việt.":
+    "翻訳はコミュニティが維持しています。未翻訳の文字列は英語、次にベトナム語で表示されます。",
+  "Bản nháp": "下書き",
+  "Bản riêng tư yêu cầu thêm quyền truy cập ở lớp hosting. API token không tự vượt qua cổng đăng nhập của hosting.":
+    "プライベート版ではホスティング層でのアクセス制御も必要です。API トークンはホストのログインゲートを通過できません。",
+  "Bản thử nghiệm riêng tư": "プライベートプレビュー",
+  "Bản tin tháng 10": "10 月のニュースレター",
+  "Bản xem riêng tư không mở SMTP":
+    "プライベートプレビューでは SMTP を開放しません",
+  "BẮT ĐẦU NHANH HƠN": "より速いスタート",
+  "Bắt đầu với một mẫu gọn gàng, rồi kể câu chuyện của bạn.":
+    "整ったテンプレートから始めて、あなたのストーリーを伝えましょう。",
+  "Bỏ qua": "スキップ済み",
+  "CSV mẫu": "CSV サンプル",
+  "Chi tiết chiến dịch": "キャンペーン詳細",
+  "Chiến dịch": "キャンペーン",
+  "Chiến dịch bạn tạo sẽ xuất hiện tại đây, từ bản nháp đến khi xử lý.":
+    "作成したキャンペーンは下書きから処理完了までここに表示されます。",
+  "Chiến dịch chờ gửi": "送信待ちのキャンペーン",
+  "Chiến dịch gần đây": "最近のキャンペーン",
+  "Chuẩn bị chiến dịch đầu tiên của bạn.":
+    "最初のキャンペーンを準備しましょう。",
+  "Chào {{first_name}},\n\nViết điều bạn muốn chia sẻ tại đây…":
+    "こんにちは {{first_name}} さん、\n\n伝えたい内容をここに書いてください…",
+  "Chưa cấp quyền": "同意なし",
+  "Chưa cấu hình": "未設定",
+  "Chưa cấu hình khóa ký hủy nhận": "配信停止の署名キーが未設定です",
+  "Chưa cấu hình địa chỉ gửi": "送信元アドレスが未設定です",
+  "Chưa kết nối SMTP tự vận hành": "自前運用の SMTP は未接続です",
+  "Chưa kết nối hệ thống thực": "実システムに未接続",
+  "Chưa mở gửi Internet": "インターネット送信はオフです",
+  "Chưa tìm thấy chiến dịch": "キャンペーンが見つかりません",
+  "Chưa xác nhận đến inbox": "受信ボックスへの到達は未確認です",
+  "Chưa xếp hàng": "未キュー",
+  "Chặn gửi": "送信をブロック",
+  "Chặn gửi đến {email}? Địa chỉ này sẽ bị loại khỏi những lần xử lý tiếp theo.":
+    "{email} への送信をブロックしますか？このアドレスは今後の処理から除外されます。",
+  "Chế độ gửi Internet chưa bật":
+    "インターネット送信モードが有効になっていません",
+  "Chế độ hiện tại": "現在のモード",
+  "Chỉ xem": "閲覧者",
+  "Chọn mẫu, viết nội dung, xem trước.":
+    "テンプレートを選び、内容を書き、プレビューします。",
+  "Chọn tệp CSV": "CSV ファイルを選択",
+  "Chọn workspace": "ワークスペースを選択",
+  "Chờ xử lý": "処理待ち",
+  "Cài đặt": "設定",
+  "Cá nhân hóa:": "パーソナライズ:",
+  "Có trong bộ self-host": "セルフホスト版に含まれます",
+  "Cấu hình self-host và xác thực tên miền.":
+    "セルフホストを設定し、ドメインを認証します。",
+  "Cần URL HTTPS công khai cho hủy nhận":
+    "配信停止には公開 HTTPS URL が必要です",
+  "Cần đối soát": "照合が必要",
+  "Cập nhật": "更新済み",
+  "Cột bắt buộc:": "必須列:",
+  "Danh bạ": "連絡先",
+  "Danh bạ bắt đầu từ sự đồng ý": "連絡先リストは同意から始まります",
+  "Danh bạ, nội dung và hàng đợi đã có chỗ. Gửi Internet đang tắt.":
+    "連絡先、コンテンツ、キューの準備は整っています。インターネット送信はオフです。",
+  "Dòng xem trước": "プレビュー行",
+  "Dùng mẫu": "テンプレートを使用",
+  "Dữ liệu của bạn.\nHạ tầng do bạn làm chủ.":
+    "あなたのデータ。\nあなたのインフラ。",
+  "Email thành viên": "メンバーのメールアドレス",
+  "Email được tạo bằng HTML gọn nhẹ, có phiên bản văn bản và liên kết hủy nhận. Nội dung mẫu cần được bạn chỉnh trước khi gửi.":
+    "メールは軽量な HTML、テキスト版、配信停止リンク付きで生成されます。送信前にサンプル文面を編集してください。",
+  "Giao diện đổi ngay khi chọn. Email dùng ngôn ngữ riêng của từng chiến dịch, kể cả trang hủy nhận.":
+    "選択するとすぐに画面が切り替わります。各キャンペーンは配信停止ページを含め独自のメール言語を使用します。",
+  "Gửi Internet đang tắt. Thư ở trạng thái chờ cho đến khi cấu hình sẵn sàng.":
+    "インターネット送信はオフです。設定が整うまでメールは待機します。",
+  "Gửi vào hộp thư thử": "テスト受信箱に送信",
+  "Gửi đi câu chuyện đầu tiên": "最初のストーリーを送る",
+  "Gửi điều có ý nghĩa.": "意味のあるものを届けよう。",
+  "Hiểu người nhận. Gửi đúng người, đúng sự đồng ý.":
+    "読み手を理解する。正しい相手に、確かな同意のもとで送信。",
+  "Hướng dẫn & trạng thái": "ガイドとステータス",
+  "Hạ tầng gửi tự vận hành": "自前運用の配信基盤",
+  "Họ và tên": "氏名",
+  "Hộp thư thử cục bộ": "ローカルテスト受信箱",
+  Hủy: "キャンセル",
+  "Hủy chiến dịch": "キャンペーンを中止",
+  "Hủy những thư chưa được SMTP tiếp nhận?":
+    "SMTP がまだ受け付けていないメールを中止しますか？",
+  "Import không kích hoạt lại địa chỉ đã hủy nhận. Email marketing chỉ chọn liên hệ có nguồn đồng ý.":
+    "インポートしても配信停止済みのアドレスは再有効化されません。マーケティングメールは同意が記録された連絡先のみを対象とします。",
+  "KHÔNG GIAN LÀM VIỆC": "ワークスペース",
+  "KHỞI ĐẦU MỖI KẾT NỐI": "すべてのつながりはここから",
+  "Key chỉ được hiển thị một lần. Lưu ở máy chủ của ứng dụng nguồn.":
+    "キーは 1 度だけ表示されます。ソースアプリのサーバーに保存してください。",
+  "Key sẽ không hiển thị lại sau khi đóng cửa sổ này.":
+    "このウィンドウを閉じるとキーは再表示されません。",
+  "Khám phá mẫu email": "メールテンプレートを見る",
+  "Không cần API key gửi mail": "配信用 API キーは不要",
+  "Không thể hoàn tất yêu cầu": "リクエストを完了できませんでした",
+  "Kiểm tra & nhập": "検証してインポート",
+  "Kiểm tra & xếp hàng": "確認してキューに追加",
+  "Kiểm tra nội dung và người nhận trước mỗi lần gửi.":
+    "送信のたびに内容と宛先を確認してください。",
+  "Kiểm tra thiết lập": "設定を確認",
+  "Kết nối hệ sinh thái Nếp, giữ quyền kiểm soát dữ liệu.":
+    "Nếp のエコシステムと連携し、データの管理権は手元に。",
+  "Kết nối máy chủ SMTP": "SMTP サーバーに接続",
+  "Kết nối theo cách của bạn": "自分のやり方で接続",
+  "Liên hệ": "連絡先",
+  "Liên hệ đã đồng ý nhận email marketing":
+    "この連絡先はマーケティングメールの受信に同意しています",
+  "Lưu API key của bạn": "API キーを保存",
+  "Lưu bản nháp": "下書きを保存",
+  "Lưu bản nháp để cập nhật kiểm tra người nhận.":
+    "下書きを保存すると宛先チェックが更新されます。",
+  "Lưu liên hệ": "連絡先を保存",
+  "Lưu nội dung trước khi xếp hàng.":
+    "キューに追加する前に内容を保存してください。",
+  "Lưu phân quyền": "権限を保存",
+  "Lịch xử lý tự động": "自動処理のスケジュール",
+  "Lọc trạng thái chiến dịch": "キャンペーンのステータスで絞り込む",
+  "Lọc trạng thái liên hệ": "連絡先のステータスで絞り込む",
+  "Marketing · cần đồng ý": "マーケティング · 同意が必要",
+  "Máy chủ gửi đã sẵn sàng.": "送信サーバーの準備が整いました。",
+  "Mẫu email": "テンプレート",
+  "Mỗi kết nối tốt đẹp\nbắt đầu bằng một lời chào.":
+    "すべての良いつながりは\nひとつの挨拶から始まる。",
+  "Mỗi workspace có danh bạ, chiến dịch và quyền truy cập riêng.":
+    "各ワークスペースは独自の連絡先、キャンペーン、アクセス権を持ちます。",
+  "MỘT KHỞI ĐẦU CHỈN CHU": "丁寧なはじまり",
+  "Một câu chuyện đang chờ được kể": "語られるのを待つストーリー",
+  "Một dòng ngắn xuất hiện bên cạnh tiêu đề": "件名の横に表示される短い一行",
+  "Một khung thư đẹp.\nMột câu chuyện của riêng bạn.":
+    "美しい枠に。\nあなただけのストーリーを。",
+  "Một liên hệ": "連絡先 1 件",
+  "Một nơi để giữ liên lạc, kể câu chuyện và nuôi dưỡng mối quan hệ.":
+    "つながりを保ち、ストーリーを語り、関係を育てる一つの場所。",
+  Mở: "開く",
+  Nguồn: "ソース",
+  "Nguồn đồng ý": "同意の取得元",
+  "Ngôn ngữ": "言語",
+  "Ngôn ngữ email": "メールの言語",
+  "Ngôn ngữ giao diện": "表示言語",
+  "Nhóm email": "メール種別",
+  "Nhập CSV": "CSV をインポート",
+  "Nhập liên hệ từ CSV": "CSV から連絡先をインポート",
+  "Nhật ký hoạt động": "アクティビティログ",
+  "Những kết nối, được chăm chút.": "大切に育むつながり。",
+  "Nếp Mail": "Nếp Mail",
+  "Nếp Mail kết nối SMTP do bạn vận hành. Bộ self-host có Postfix gửi trực tiếp, không yêu cầu tài khoản hay API key dịch vụ gửi thuê ngoài.":
+    "Nếp Mail はご自身で運用する SMTP に接続します。セルフホスト版には直接配信の Postfix が含まれ、外部の有料配信サービスのアカウントや API キーは不要です。",
+  "Nếp Mail · Tổng quan": "Nếp Mail · 概要",
+  "Nếu có dòng lỗi, toàn bộ lần nhập bị từ chối. Liên hệ trùng được cập nhật tên và tag; không khôi phục quyền nhận của địa chỉ đã chặn.":
+    "エラーの行が 1 つでもあるとインポート全体が拒否されます。重複する連絡先は名前とタグが更新されますが、ブロック済みアドレスの受信同意は復元されません。",
+  "NỘI DUNG EMAIL": "メール本文",
+  "Nội bộ": "社内",
+  "Nội dung": "コンテンツ",
+  "Nội dung CSV": "CSV の内容",
+  "Phần mềm miễn phí; tên miền, máy chủ và kết nối Internet do bạn chuẩn bị. Khả năng đến inbox phụ thuộc cấu hình và uy tín gửi.":
+    "ソフトウェアは無料です。ドメイン、サーバー、インターネット接続はご用意ください。受信ボックスへの到達は設定と送信レピュテーションに依存します。",
+  "Quay lại": "戻る",
+  "Quyền nhận marketing": "マーケティング受信の同意",
+  "Quản lý workspace, quyền truy cập và hạ tầng gửi.":
+    "ワークスペース、アクセス権、配信基盤を管理します。",
+  "Quản trị viên": "管理者",
+  "SMTP tự vận hành": "自前運用 SMTP",
+  "SMTP đã nhận": "SMTP 受付済み",
+  "SMTP đã tiếp nhận": "SMTP が受け付けました",
+  "Sao chép key": "キーをコピー",
+  "Self-host alpha sử dụng một tài khoản quản trị. Đăng nhập nhiều tài khoản độc lập cần adapter xác thực bổ sung.":
+    "セルフホストのアルファ版は管理者アカウント 1 つを使用します。独立した複数アカウントでのログインには追加の認証アダプターが必要です。",
+  "Self-host: mỗi 10 giây khi bật gửi":
+    "セルフホスト: 送信オンの間は 10 秒ごと",
+  "Soạn điều muốn chia sẻ": "伝えたいことを書く",
+  "Sẵn sàng": "準備完了",
+  "Sẵn sàng để gửi": "送信可能",
+  "Số liệu workspace": "ワークスペースの指標",
+  "Tag người nhận": "受信者タグ",
+  "Thao tác": "操作",
+  "Thu hồi": "無効化",
+  "Thu hồi key “{name}”? Ứng dụng đang dùng key sẽ ngừng đồng bộ.":
+    "キー「{name}」を無効化しますか？このキーを使用中のアプリは同期を停止します。",
+  "Thành viên & phân quyền": "メンバーと権限",
+  "Thêm hoặc nhập liên hệ": "連絡先を追加またはインポート",
+  "Thêm liên hệ": "連絡先を追加",
+  "Thêm liên hệ và ghi nhận nguồn đồng ý.":
+    "連絡先を追加し、同意の取得元を記録します。",
+  "Thêm từng liên hệ hoặc nhập CSV với thông tin nguồn đăng ký.":
+    "連絡先を 1 件ずつ追加するか、登録元の情報を含む CSV をインポートします。",
+  "Thông tin nội bộ": "社内のお知らせ",
+  "Thời gian gửi": "送信日時",
+  "Thử lại": "再試行",
+  "Thử với dữ liệu mẫu": "サンプルデータで試す",
+  "Tiêu đề email": "メール件名",
+  "Tiêu đề email của bạn": "メール件名を入力",
+  "Token chỉ được gửi sự kiện danh bạ trong workspace này. Hệ thống nguồn không được tự cấp quyền nhận marketing. Mỗi sự kiện cần một ID duy nhất để chống xử lý trùng.":
+    "このトークンは、このワークスペース内の連絡先イベントのみを送信できます。ソースシステムが単独でマーケティングの同意を付与することはできません。各イベントには重複処理を防ぐため一意の ID が必要です。",
+  "Trong workspace hiện tại": "現在のワークスペース内",
+  "Trạng thái": "ステータス",
+  "Tách biệt dữ liệu": "データを分離",
+  "Tên chiến dịch": "キャンペーン名",
+  "Tên kết nối": "接続名",
+  "Tên workspace": "ワークスペース名",
+  "Tìm chiến dịch": "キャンペーンを検索",
+  "Tìm liên hệ": "連絡先を検索",
+  "Tìm tên, email hoặc tag…": "名前、メール、タグで検索…",
+  "Tìm tên, tiêu đề email…": "名前、件名で検索…",
+  "Tích hợp": "連携",
+  "Tôi đã lưu key": "キーを保存しました",
+  "Tạo API key": "API キーを作成",
+  "Tạo API key riêng cho Nếp HR, Nếp Business hoặc một ứng dụng khác.":
+    "Nếp HR、Nếp Business、その他のアプリ専用の API キーを作成します。",
+  "Tạo chiến dịch": "キャンペーンを作成",
+  "Tạo chiến dịch mới": "新しいキャンペーン",
+  "Tạo chiến dịch đầu tiên hoặc chọn một mẫu email để bắt đầu.":
+    "最初のキャンペーンを作成するか、メールテンプレートから始めましょう。",
+  "Tạo key": "キーを作成",
+  "Tạo lúc": "作成日時",
+  "Tạo workspace": "ワークスペースを作成",
+  "Tạo workspace mới": "新しいワークスペースを作成",
+  "Tạo workspace đầu tiên": "最初のワークスペースを作成",
+  "Tạo workspace đầu tiên để quản lý danh bạ, soạn bản tin và chuẩn bị chiến dịch email của bạn.":
+    "最初のワークスペースを作成して、連絡先の管理、ニュースレターの作成、メールキャンペーンの準備を始めましょう。",
+  "Tất cả liên hệ": "すべての連絡先",
+  "Tất cả trạng thái": "すべてのステータス",
+  "Tệp tối đa 500 KB": "ファイルは 500 KB 以下にしてください",
+  "Tổng liên hệ": "連絡先の合計",
+  "Tổng quan": "概要",
+  "Từ ý tưởng đầu tiên đến từng email được gửi đi.":
+    "最初のアイデアから、送信される一通一通まで。",
+  "Vai trò": "役割",
+  "Ví dụ: Công ty của bạn": "例: あなたの会社",
+  "Workspace của bạn": "あなたのワークスペース",
+  "Workspace mới đã sẵn sàng": "新しいワークスペースの準備ができました",
+  "XEM TRƯỚC": "プレビュー",
+  "Xem di động": "モバイル表示",
+  "Xem thư viện mẫu": "テンプレートライブラリを見る",
+  "Xem thử riêng tư": "プライベートプレビュー",
+  "Xem trước nội dung email": "メール本文をプレビュー",
+  "Xem tất cả": "すべて表示",
+  "Xác nhận": "確定",
+  "Xác nhận chốt người nhận": "宛先リストの確定",
+  "Xác nhận thao tác": "操作の確認",
+  "Xác nhận xếp hàng": "確定してキューに追加",
+  "Xây danh bạ của bạn": "連絡先リストを作成",
+  "Xử lý 10 thư": "10 通を処理",
+  "email.footer": "{brand} が Nếp Mail で送信しました。",
+  "email.textFooter": "配信停止: {url}",
+  "email.unsubscribe": "配信停止",
+  nếp: "nếp",
+  "nếp mail": "nếp mail",
+  "unsub.confirm": "配信停止を確定",
+  "unsub.done": "配信停止が完了しました",
+  "unsub.doneBody": "ご依頼を保存しました。",
+  "unsub.intro":
+    "このワークスペースからのメール受信を停止する場合は確定してください。",
+  "unsub.title": "配信停止",
+  "{n} chiến dịch": "{n} 件のキャンペーン",
+  "{n} chiến dịch|one": "{n} 件のキャンペーン",
+  "{n} liên hệ": "{n} 件の連絡先",
+  "{n} liên hệ|one": "{n} 件の連絡先",
+  "{n} liên hệ bị loại": "{n} 件の連絡先を除外",
+  "{n} liên hệ bị loại|one": "{n} 件の連絡先を除外",
+  "{n} liên hệ đủ điều kiện sẽ được chốt thành danh sách gửi. Nội dung sẽ khóa sau khi xếp hàng.":
+    "{n} 件の対象連絡先が送信リストとして確定されます。キューに追加すると内容はロックされます。",
+  "{n} liên hệ đủ điều kiện sẽ được chốt thành danh sách gửi. Nội dung sẽ khóa sau khi xếp hàng.|one":
+    "{n} 件の対象連絡先が送信リストとして確定されます。キューに追加すると内容はロックされます。",
+  "{n} ngôn ngữ": "{n} 言語",
+  "{n} người nhận đủ điều kiện": "{n} 件の対象受信者",
+  "{n} người nhận đủ điều kiện|one": "{n} 件の対象受信者",
+  "· bỏ trống để xử lý ngay khi sẵn sàng":
+    "· 空欄にすると準備でき次第すぐ処理します",
+  "· phân cách bằng dấu phẩy": "· カンマ区切り",
+  "Đang chờ gửi": "送信待ち",
+  "Đang hiệu lực": "有効",
+  "Đang hoạt động": "有効",
+  "Đang hoạt động và có nguồn đồng ý": "有効・同意取得済み",
+  "Đang tải workspace…": "ワークスペースを読み込み中…",
+  "Đang xử lý": "処理中",
+  "Điều hướng chính": "メインナビゲーション",
+  "Điều muốn gửi đến {{first_name}}": "{{first_name}} さんに送りたい内容",
+  "Đã bật": "有効",
+  "Đã chặn": "ブロック済み",
+  "Đã chặn liên hệ": "連絡先をブロックしました",
+  "Đã chốt danh sách người nhận": "宛先リストを確定しました",
+  "Đã có lõi danh bạ, chiến dịch, hàng đợi, phân quyền và hợp đồng tích hợp. Các cổng còn thiếu gồm kiểm chứng SMTP ra Internet, thu nhận bounce/complaint, khôi phục backup và rà soát bảo mật độc lập. Giấy phép mở nguồn cần được chốt trước khi công khai repo.":
+    "連絡先、キャンペーン、キュー、権限、連携契約の中核は実装済みです。残る課題は、インターネット向け SMTP の実地検証、バウンス・苦情の取り込み、リストア訓練、独立したセキュリティレビューです。リポジトリ公開前にオープンソースライセンスを確定する必要があります。",
+  "Đã gửi vào hộp thư thử cục bộ": "ローカルテスト受信箱に送信しました",
+  "Đã hủy": "中止済み",
+  "Đã hủy chiến dịch": "キャンペーンを中止しました",
+  "Đã hủy nhận": "配信停止済み",
+  "Đã lưu bản nháp": "下書きを保存しました",
+  "Đã lưu liên hệ": "連絡先を保存しました",
+  "Đã lưu phân quyền. Người dùng còn cần được cấp quyền truy cập ở lớp hosting.":
+    "権限を保存しました。対象者はホスティング層でのアクセス許可も必要です。",
+  "Đã sao chép API key": "API キーをコピーしました",
+  "Đã thu hồi": "無効化済み",
+  "Đã thu hồi API key": "API キーを無効化しました",
+  "Đã tạo 6 liên hệ tổng hợp. Không gửi ra Internet.":
+    "サンプルの連絡先を 6 件作成しました。インターネットへは送信しません。",
+  "Đã xếp hàng {n} người nhận. Gửi chỉ chạy khi cấu hình sẵn sàng.":
+    "{n} 件の受信者をキューに追加しました。送信は設定が整うと実行されます。",
+  "Đã xử lý": "処理済み",
+  "Đã xử lý một đợt gửi": "1 バッチを処理しました",
+  "Đã xử lý {rows} dòng, {unique} email riêng biệt":
+    "{rows} 行を処理、{unique} 件の固有アドレス",
+  "Đã đồng ý": "同意済み",
+  Đóng: "閉じる",
+  "Đóng thông báo": "通知を閉じる",
+  "Đăng nhập": "ログイン",
+  "Đăng xuất": "ログアウト",
+  "ĐƯỢC GỬI VỚI SỰ CHĂM CHÚT": "心を込めて送信",
+  "Đến nội dung chính": "本文へスキップ",
+  "Đến: {name}": "宛先: {name}",
+  "Để sau": "後で",
+  "Để trống: tất cả đủ điều kiện": "空欄: 対象すべて",
+  "Địa chỉ email": "メールアドレス",
+  "Địa chỉ gửi": "送信元アドレス",
+  "Địa chỉ tổng hợp · Liên kết hủy nhận chỉ là bản xem trước":
+    "サンプルアドレス · 配信停止リンクはプレビューのみ",
+  "Đồng bộ danh bạ Nếp HR": "Nếp HR の名簿を同期",
+  "Đồng bộ danh bạ nhân sự và nguồn dữ liệu cho bản tin nội bộ.":
+    "社内ニュースレター用にスタッフ名簿とデータソースを同期します。",
+  "Đồng bộ khách hàng để chuẩn bị chiến dịch chăm sóc và marketing.":
+    "顧客データを同期して、フォローとマーケティングのキャンペーンを準備します。",
+  "Đồng ý nhận marketing": "マーケティング受信の同意",
+  "Độc lập. Tự vận hành. Không dịch vụ gửi bắt buộc.":
+    "独立。セルフホスト。必須の配信サービスなし。",
+  "Ứng dụng khác": "その他のアプリ",
+  "Ứng dụng nguồn": "ソースアプリ",
+  "Đăng nhập Nếp Mail": "Nếp Mail にログイン",
+  "Không gian email của bạn.": "あなたのメールワークスペース。",
+  "Mật khẩu quản trị": "管理者パスワード",
+  "Mật khẩu không đúng": "パスワードが正しくありません",
+  "Vui lòng thử lại sau 10 phút": "10 分後に再度お試しください。",
+  "Biểu mẫu công khai không cần đăng nhập: người đọc nhập tên và email, nhận thư xác nhận, rồi bấm một liên kết. Chỉ sau đó liên hệ mới được tính là đồng ý.":
+    "公開フォームはアカウント不要です。読者が名前とメールアドレスを入力し、確認メールを受け取ってリンクをクリックします。その後はじめて同意とみなされます。",
+  "Biểu mẫu này hiện không nhận đăng ký.":
+    "このフォームは現在登録を受け付けていません。",
+  "Biểu mẫu trên website, ngày xác nhận": "ウェブサイトのフォーム、確認日",
+  "Biểu mẫu đăng ký": "登録フォーム",
+  "Bản ghi MX": "MX レコード",
+  "Bản tin hàng tháng": "月次ニュースレター",
+  "Chào {name},\n\nXác nhận địa chỉ email của bạn để nhận tin từ {brand}:\n{url}\n\nNếu bạn không đăng ký, hãy bỏ qua email này. Liên kết hết hạn sau 48 giờ.":
+    "こんにちは {name} さん。\n\n{brand} からのお知らせを受け取るため、メールアドレスをご確認ください。\n{url}\n\nお心当たりがない場合は、このメールを破棄してください。リンクの有効期限は 48 時間です。",
+  "Chính sách chưa đủ mạnh": "ポリシーが十分に厳格ではありません",
+  "Chính sách p=none": "ポリシーが p=none です",
+  "Chúng tôi gửi email hữu ích, không spam. Bạn có thể hủy nhận bất cứ lúc nào.":
+    "お役に立つメールのみをお送りし、スパムは送りません。配信停止はいつでも可能です。",
+  "Chúng tôi lưu nguồn đồng ý của bạn và chỉ gửi email marketing sau khi bạn xác nhận.":
+    "同意の取得元を記録し、ご確認いただいた後にのみマーケティングメールをお送りします。",
+  "Chúng tôi đã gửi liên kết xác nhận tới {email}. Mở liên kết để hoàn tất đăng ký.":
+    "{email} に確認リンクを送信しました。リンクを開いて登録を完了してください。",
+  "Chưa có biểu mẫu nào. Tạo một biểu mẫu để nhận đăng ký có xác nhận.":
+    "フォームはまだありません。作成して、確認済みの登録を集めましょう。",
+  "Chưa có bản ghi": "レコードがありません",
+  "Chưa sẵn sàng": "未準備",
+  "Chưa thể gửi email xác nhận": "確認メールをまだ送信できません",
+  "Chờ gửi": "送信待ち",
+  "Chờ xác nhận": "確認待ち",
+  "Có nhiều bản ghi SPF": "SPF レコードが複数あります",
+  "Cảm ơn bạn. Bạn sẽ nhận email từ {brand}.":
+    "ありがとうございます。{brand} からメールが届きます。",
+  "Cảnh báo": "警告",
+  DKIM: "DKIM",
+  DMARC: "DMARC",
+  "Double opt-in: liên hệ chỉ nhận marketing sau khi bấm xác nhận trong email. Người đăng ký không cần tài khoản.":
+    "ダブルオプトイン: 連絡先は確認リンクをクリックした後にのみマーケティングを受け取ります。登録者はアカウント不要です。",
+  "Email chưa hợp lệ.": "このメールアドレスは有効ではありません。",
+  "Giá trị TXT": "TXT 値",
+  "Khoá DKIM mới": "新しい DKIM キー",
+  "Khoá công khai rỗng": "公開キーが空です",
+  "Khoá riêng DKIM chỉ hiển thị một lần và không được lưu trong cơ sở dữ liệu. Đặt nó vào tệp mà DKIM_PRIVATE_KEY_FILE trỏ tới.":
+    "DKIM 秘密キーは一度だけ表示され、データベースには保存されません。DKIM_PRIVATE_KEY_FILE が指すファイルに保存してください。",
+  "Kiểm tra DNS": "DNS を確認",
+  "Kiểm tra SPF, DKIM và DMARC trước khi bật gửi ra Internet. Kết quả đọc trực tiếp từ DNS công khai.":
+    "インターネット送信を有効にする前に、SPF、DKIM、DMARC を確認してください。結果は公開 DNS から直接取得します。",
+  "Kiểm tra hộp thư của bạn": "受信トレイをご確認ください",
+  "Liên kết xác nhận không hợp lệ hoặc đã hết hạn.":
+    "この確認リンクは無効か、有効期限が切れています。",
+  "Máy chủ gửi chưa được cấu hình.": "送信サーバーが設定されていません。",
+  "Nguồn đồng ý ghi vào liên hệ": "連絡先に記録される同意の取得元",
+  "Quá nhiều lần đăng ký. Vui lòng thử lại sau.":
+    "登録の試行回数が多すぎます。しばらくしてから再度お試しください。",
+  SPF: "SPF",
+  "Sao chép": "コピー",
+  "Thiếu -all hoặc ~all": "-all または ~all がありません",
+  "Thêm bản ghi TXT dưới đây vào DNS, rồi lưu khoá riêng vào tệp mà DKIM_PRIVATE_KEY_FILE trỏ tới. Khoá không được lưu trong cơ sở dữ liệu và sẽ không hiển thị lại.":
+    "以下の TXT レコードを DNS に登録し、秘密キーを DKIM_PRIVATE_KEY_FILE が指すファイルに保存してください。データベースには保存されず、再表示もされません。",
+  "Tên biểu mẫu": "フォーム名",
+  "Tên bản ghi": "レコード名",
+  "Tên miền & DNS": "ドメインと DNS",
+  "Tên miền gửi": "送信ドメイン",
+  "Tôi đã lưu": "保存しました",
+  "Tạo biểu mẫu": "フォームを作成",
+  "Tạo khoá DKIM": "DKIM キーを生成",
+  "Tải khoá riêng": "秘密キーをダウンロード",
+  Xoá: "削除",
+  "Xoá biểu mẫu “{name}”? Liên kết công khai sẽ ngừng hoạt động.":
+    "フォーム「{name}」を削除しますか？公開リンクは使えなくなります。",
+  "Xác nhận đăng ký": "登録を確認",
+  "Xác nhận đăng ký nhận email từ {brand}": "{brand} の購読を確認",
+  "Xác nhận để nhận email từ {brand}.":
+    "{brand} からのメール受信を確認してください。",
+  "Đã sao chép bản ghi DNS": "DNS レコードをコピーしました",
+  "Đã sao chép liên kết": "リンクをコピーしました",
+  "Đã tạo biểu mẫu và sao chép liên kết công khai":
+    "フォームを作成し、公開リンクをコピーしました",
+  "Đã xoá biểu mẫu": "フォームを削除しました",
+  "Đã xác nhận trước đó.": "すでに確認済みです。",
+  "Đã xác nhận đăng ký": "登録が確認されました",
+  "Đăng ký": "登録",
+  "Đăng ký nhận email": "メールの購読",
+  Đạt: "正常",
+  "Địa chỉ này đã được xác nhận. Bạn không cần làm gì thêm.":
+    "このアドレスはすでに確認済みです。追加の操作は不要です。",
+  "Không tìm thấy biểu mẫu": "フォームが見つかりません",
+  "Đường dẫn biểu mẫu đã tồn tại":
+    "このフォームのアドレスはすでに使われています",
+  "Tên miền không hợp lệ": "このドメインは有効ではありません",
+  "Selector không hợp lệ": "このセレクターは有効ではありません",
+  "Không tra được DNS. Vui lòng thử lại.":
+    "DNS の照会に失敗しました。もう一度お試しください。",
+  "Không tìm thấy bounce trong nội dung":
+    "このメッセージにバウンスは見つかりませんでした",
+};
