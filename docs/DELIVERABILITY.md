@@ -108,6 +108,40 @@ old mail because processed messages are flagged seen; a crash between flagging
 and suppressing is the only way an event is lost, and the next bounce for that
 address will cover it.
 
+### Checking a real mailbox first
+
+`scripts/imap-check.mjs` connects with the same settings the poller uses and has
+three modes. Credentials live in a local file, never in chat or in the repo:
+
+```ini
+# .env.bounce-test  (already gitignored)
+BOUNCE_IMAP_HOST=imap.gmail.com
+BOUNCE_IMAP_PORT=993
+BOUNCE_IMAP_SECURE=true
+BOUNCE_IMAP_USER=you@gmail.com
+BOUNCE_IMAP_PASS=app-password-here
+```
+
+```sh
+node --env-file=.env.bounce-test scripts/imap-check.mjs --list   # auth, TLS, folders
+node --env-file=.env.bounce-test scripts/imap-check.mjs --scan   # read-only report
+NEP_MAIL_URL=https://mail.example.vn NEP_MAIL_KEY=nep_… \
+  node --env-file=.env.bounce-test scripts/imap-check.mjs --apply
+```
+
+`--scan` prints kind, masked address, SMTP status and subject; it flags nothing
+and sends nothing. `--apply` posts each raw message to `/api/v1/bounces` and only
+then marks it seen, so a failed POST is retried on the next run.
+
+Gmail notes: enable 2-Step Verification, create an **App password**, and keep IMAP
+enabled in Gmail settings. Gmail exposes folders as `[Gmail]/All Mail`,
+`[Gmail]/Spam`; `INBOX` is where DSNs arrive. Zoho uses `imap.zoho.com:993` and an
+app-specific password as well.
+
+To generate a genuine bounce for testing, send any message to
+`bounce@simulator.amazonses.com` — Amazon's mailbox simulator returns a real DSN
+to the envelope sender within a minute, no AWS account required.
+
 ### Verifying the poller without your own mail
 
 `scripts/imap-e2e.mjs` runs the whole path against a throwaway IMAP server:
