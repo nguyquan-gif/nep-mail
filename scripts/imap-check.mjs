@@ -179,7 +179,18 @@ try {
     lock.release();
   }
 } catch (error) {
-  console.error("FAILED:", error instanceof Error ? error.message : error);
+  // Servers explain themselves in the tagged NO response; "Command failed" on
+  // its own sends operators hunting for the wrong problem.
+  const detail = [
+    error instanceof Error ? error.message : String(error),
+    error?.responseText ? `server: ${error.responseText}` : "",
+    error?.authenticationFailed && !error?.responseText
+      ? "authentication failed"
+      : "",
+  ]
+    .filter(Boolean)
+    .join(" | ");
+  console.error("FAILED:", detail);
   process.exitCode = 1;
 } finally {
   try {

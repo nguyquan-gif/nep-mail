@@ -169,8 +169,12 @@ export function createBouncePoller(input: {
       };
     } catch (error) {
       const message = error instanceof Error ? error.message : "unknown";
-      log("bounce_poll_failed", { error: message });
-      return { messages: 0, events: 0, suppressed: 0, error: message };
+      const response = (error as { responseText?: string })?.responseText;
+      // Keep the server's own explanation: "IMAP is not enabled" is a different
+      // fix from "wrong password".
+      const detail = response ? `${message}: ${response}` : message;
+      log("bounce_poll_failed", { error: detail });
+      return { messages: 0, events: 0, suppressed: 0, error: detail };
     } finally {
       try {
         lock?.release();
