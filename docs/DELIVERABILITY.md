@@ -108,6 +108,23 @@ old mail because processed messages are flagged seen; a crash between flagging
 and suppressing is the only way an event is lost, and the next bounce for that
 address will cover it.
 
+### Verifying the poller without your own mail
+
+`scripts/imap-e2e.mjs` runs the whole path against a throwaway IMAP server:
+
+```sh
+docker run -d --name nep-greenmail --user 0:0 --entrypoint /bin/sh \
+  -p 3025:3025 -p 3143:3143 greenmail/standalone:latest \
+  -c 'exec /home/greenmail/run_greenmail.sh'
+node scripts/imap-e2e.mjs     # → E2E PASS
+docker rm -f nep-greenmail
+```
+
+It creates a workspace and contact, delivers a DSN over SMTP, polls over IMAP,
+asserts the contact became `suppressed` with an audit row from `imap`, and that a
+second poll reads nothing. Hosts and ports can be overridden with `E2E_SMTP_HOST`,
+`E2E_SMTP_PORT`, `E2E_IMAP_HOST`, `E2E_IMAP_PORT`, `E2E_IMAP_USER`.
+
 ## What is still yours to operate
 
 - Outbound port 25, a static IP and matching PTR record.
