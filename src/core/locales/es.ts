@@ -442,4 +442,7 @@ export const es: Pack = {
     "No se pudo consultar el DNS. Inténtalo de nuevo.",
   "Không tìm thấy bounce trong nội dung":
     "No se encontró ningún rebote en ese mensaje",
+  "Đổi tên workspace": "Cambiar el nombre del espacio",
+  "Đã đổi tên workspace": "Espacio renombrado",
+  "Tên workspace quá ngắn": "El nombre del espacio es demasiado corto",
 };

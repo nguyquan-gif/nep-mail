@@ -27,6 +27,7 @@ import {
   BookOpen,
   ChevronDown,
   Globe,
+  Pencil,
 } from "lucide-react";
 import { renderEmail } from "../core/domain.ts";
 import {
@@ -315,6 +316,8 @@ export default function App({
     [dnsDomain, setDnsDomain] = useState(""),
     [dns, setDns] = useState<Item | null>(null),
     [dnsBusy, setDnsBusy] = useState(false),
+    [renaming, setRenaming] = useState(false),
+    [nameDraft, setNameDraft] = useState(""),
     [dkim, setDkim] = useState<Item | null>(null),
     [locale, changeLocale] = useLocale();
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -333,6 +336,28 @@ export default function App({
     );
     return b;
   }, []);
+  async function saveWorkspaceName() {
+    const name = nameDraft.trim();
+    if (!workspace) return;
+    if (name.length < 2) {
+      notice(t("Tên workspace quá ngắn"));
+      return;
+    }
+    setBusy(true);
+    try {
+      // The name is printed in the footer of every email, so reload both the
+      // workspace list and the open workspace after saving.
+      await request("workspaces/" + workspace, "PATCH", { name });
+      await loadBoot();
+      setData(await request("workspaces/" + workspace));
+      setRenaming(false);
+      notice(t("Đã đổi tên workspace"));
+    } catch (e) {
+      notice(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  }
   const refresh = useCallback(async () => {
     if (workspace) {
       const p = await request("workspaces/" + workspace);
@@ -480,22 +505,73 @@ export default function App({
             <span className="workspace-avatar">
               {data?.workspace?.name?.[0] || "N"}
             </span>
-            <select
-              aria-label={t("Chọn workspace")}
-              disabled={busy || loading}
-              value={workspace}
-              onChange={(e) => setWorkspace(e.target.value)}
-            >
-              <option value="" disabled>
-                {t("Chọn workspace")}
-              </option>
-              {boot?.workspaces.map((w: Item) => (
-                <option value={w.id} key={w.id}>
-                  {w.name}
-                </option>
-              ))}
-            </select>
-            <ChevronDown size={14} />
+            {renaming ? (
+              <form
+                className="workspace-rename"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  void saveWorkspaceName();
+                }}
+              >
+                <input
+                  aria-label={t("Tên workspace")}
+                  autoFocus
+                  maxLength={100}
+                  value={nameDraft}
+                  onChange={(e) => setNameDraft(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape") setRenaming(false);
+                  }}
+                />
+                <button
+                  className="text-button"
+                  type="submit"
+                  disabled={busy || nameDraft.trim().length < 2}
+                >
+                  {t("Lưu")}
+                </button>
+                <button
+                  className="text-button"
+                  type="button"
+                  onClick={() => setRenaming(false)}
+                >
+                  {t("Hủy")}
+                </button>
+              </form>
+            ) : (
+              <>
+                <select
+                  aria-label={t("Chọn workspace")}
+                  disabled={busy || loading}
+                  value={workspace}
+                  onChange={(e) => setWorkspace(e.target.value)}
+                >
+                  <option value="" disabled>
+                    {t("Chọn workspace")}
+                  </option>
+                  {boot?.workspaces.map((w: Item) => (
+                    <option value={w.id} key={w.id}>
+                      {w.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={14} />
+                {role === "admin" && workspace ? (
+                  <button
+                    className="icon-button workspace-rename-open"
+                    type="button"
+                    aria-label={t("Đổi tên workspace")}
+                    title={t("Đổi tên workspace")}
+                    onClick={() => {
+                      setNameDraft(data?.workspace?.name || "");
+                      setRenaming(true);
+                    }}
+                  >
+                    <Pencil size={13} />
+                  </button>
+                ) : null}
+              </>
+            )}
           </div>
           <button
             className="text-button workspace-add"
@@ -524,7 +600,7 @@ export default function App({
         <div className="sidebar-bottom">
           <div className="edition">
             <span className="edition-dot" />
-            SELF-HOSTED · ALPHA 0.2
+            SELF-HOSTED · ALPHA 0.4
           </div>
           <p style={{ whiteSpace: "pre-line" }}>
             {t("Dữ liệu của bạn.\nHạ tầng do bạn làm chủ.")}

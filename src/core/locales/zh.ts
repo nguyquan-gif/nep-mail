@@ -417,4 +417,7 @@ export const zh: Pack = {
   "Selector không hợp lệ": "该选择器无效",
   "Không tra được DNS. Vui lòng thử lại.": "DNS 查询失败，请重试。",
   "Không tìm thấy bounce trong nội dung": "在该邮件中未找到退信信息",
+  "Đổi tên workspace": "重命名工作区",
+  "Đã đổi tên workspace": "工作区已重命名",
+  "Tên workspace quá ngắn": "名称太短",
 };

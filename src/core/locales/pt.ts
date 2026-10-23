@@ -442,4 +442,7 @@ export const pt: Pack = {
     "A consulta DNS falhou. Tente de novo.",
   "Không tìm thấy bounce trong nội dung":
     "Nenhum bounce foi encontrado na mensagem",
+  "Đổi tên workspace": "Renomear workspace",
+  "Đã đổi tên workspace": "Workspace renomeado",
+  "Tên workspace quá ngắn": "O nome do workspace é muito curto",
 };

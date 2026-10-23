@@ -433,4 +433,7 @@ export const en: Pack = {
   "Không tra được DNS. Vui lòng thử lại.":
     "The DNS lookup failed. Please try again.",
   "Không tìm thấy bounce trong nội dung": "No bounce was found in that message",
+  "Đổi tên workspace": "Rename workspace",
+  "Đã đổi tên workspace": "Workspace renamed",
+  "Tên workspace quá ngắn": "Workspace name is too short",
 };

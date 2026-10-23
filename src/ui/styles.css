@@ -223,6 +223,34 @@ strong {
   gap: 8px;
   margin-top: 10px;
 }
+.workspace-rename {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+.workspace-rename input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 8px;
+  border: 1px solid #dce4d7;
+  border-radius: 6px;
+  background: #fff;
+}
+.workspace-rename-open {
+  padding: 4px;
+  border-radius: 6px;
+  color: #5c6b60;
+  line-height: 0;
+}
+.workspace-rename-open:hover {
+  background: #eef3ea;
+  color: #20392e;
+}
 .workspace-select select {
   appearance: none;
   padding: 0;

@@ -174,6 +174,13 @@ and [docs/RELEASE.md](docs/RELEASE.md).
 [Test and release status](docs/TEST-REPORT.md) · [Launch kit](docs/LAUNCH.md) ·
 [Security](SECURITY.md)
 
+## Support the project
+
+Nếp Mail is free and self-hostable with no paid tier. If it saves you a
+subscription, you can sponsor development — see the **Sponsor** button, or
+[docs/LAUNCH.md](docs/LAUNCH.md) for what the money actually pays for. Donations
+buy time, not features: nothing here is behind a paywall, ever.
+
 ## License
 
 GNU Affero General Public License v3.0 or later — see [LICENSE](LICENSE) and

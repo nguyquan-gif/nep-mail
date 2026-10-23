@@ -437,4 +437,7 @@ export const de: Pack = {
     "Die DNS-Abfrage ist fehlgeschlagen. Bitte erneut versuchen.",
   "Không tìm thấy bounce trong nội dung":
     "In dieser Nachricht wurde kein Bounce gefunden",
+  "Đổi tên workspace": "Workspace umbenennen",
+  "Đã đổi tên workspace": "Workspace umbenannt",
+  "Tên workspace quá ngắn": "Der Workspace-Name ist zu kurz",
 };

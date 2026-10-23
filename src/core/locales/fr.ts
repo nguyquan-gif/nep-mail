@@ -442,4 +442,7 @@ export const fr: Pack = {
   "Không tra được DNS. Vui lòng thử lại.":
     "La recherche DNS a échoué. Veuillez réessayer.",
   "Không tìm thấy bounce trong nội dung": "Aucun bounce trouvé dans ce message",
+  "Đổi tên workspace": "Renommer l’espace",
+  "Đã đổi tên workspace": "Espace renommé",
+  "Tên workspace quá ngắn": "Le nom de l’espace est trop court",
 };

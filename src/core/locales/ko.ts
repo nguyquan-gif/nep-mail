@@ -432,4 +432,7 @@ export const ko: Pack = {
     "DNS 조회에 실패했습니다. 다시 시도해 주세요.",
   "Không tìm thấy bounce trong nội dung":
     "해당 메시지에서 반송 정보를 찾지 못했습니다",
+  "Đổi tên workspace": "워크스페이스 이름 변경",
+  "Đã đổi tên workspace": "워크스페이스 이름을 변경했습니다",
+  "Tên workspace quá ngắn": "이름이 너무 짧습니다",
 };

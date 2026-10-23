@@ -437,4 +437,7 @@ export const ja: Pack = {
     "DNS の照会に失敗しました。もう一度お試しください。",
   "Không tìm thấy bounce trong nội dung":
     "このメッセージにバウンスは見つかりませんでした",
+  "Đổi tên workspace": "ワークスペース名を変更",
+  "Đã đổi tên workspace": "ワークスペース名を変更しました",
+  "Tên workspace quá ngắn": "名前が短すぎます",
 };
