@@ -5,10 +5,12 @@ services:
     env_file: .env
     environment:
       DATA_DIR: /data
-      SMTP_HOST: mailpit
-      SMTP_PORT: 1025
-      LIVE_SEND: "false"
-      CAPTURE_MODE: "true"
+      # Defaults only: a value in .env must be able to override these, otherwise
+      # turning live sending on requires editing compose instead of .env.
+      SMTP_HOST: ${SMTP_HOST:-mailpit}
+      SMTP_PORT: ${SMTP_PORT:-1025}
+      LIVE_SEND: ${LIVE_SEND:-false}
+      CAPTURE_MODE: ${CAPTURE_MODE:-true}
     ports:
       - "127.0.0.1:3000:3000"
     volumes:

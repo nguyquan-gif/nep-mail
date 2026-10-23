@@ -189,7 +189,7 @@ const server = createServer(async (req, res) => {
         "content-type": "application/json",
         "cache-control": "no-store",
       });
-      res.end(JSON.stringify({ status: "ok", version: "0.3.0-alpha.1" }));
+      res.end(JSON.stringify({ status: "ok", version: "0.3.0-alpha.2" }));
       return;
     }
     if (url.pathname === "/auth/login" && req.method === "POST") {
@@ -327,7 +327,13 @@ const bouncePoller = imapOptions
   : null;
 server.listen(Number(process.env.PORT || 3000), "0.0.0.0", () => {
   console.log(
-    `Nếp Mail listening; mode=${live ? "direct-smtp" : "capture"}; live delivery=${live}`,
+    `Nếp Mail listening; mode=${
+      live
+        ? relayEnabled
+          ? `relay:${relayProvider}`
+          : "direct-smtp"
+        : "capture"
+    }; live delivery=${live}`,
   );
   if (bouncePoller) {
     console.log(

@@ -151,19 +151,34 @@ export function relayEventsFromPayload(
     const email =
       typeof event?.email === "string" ? event.email.toLowerCase().trim() : "";
     if (!email) continue;
-    const name = String(event.event || "").toLowerCase();
+    const raw = String(event.event || "");
+    // Brevo sends camelCase ("hardBounce"); other providers use snake_case, so
+    // compare on a stripped key rather than guessing one convention.
+    const name = raw.toLowerCase().replace(/[^a-z]/g, "");
     let kind: BounceEvent["kind"] | null = null;
-    if (["hard_bounce", "blocked", "invalid", "invalid_email"].includes(name))
+    if (
+      [
+        "hardbounce",
+        "blocked",
+        "invalid",
+        "invalidemail",
+        "invalidrecipient",
+      ].includes(name)
+    )
       kind = "hard";
-    else if (["soft_bounce", "deferred", "error"].includes(name)) kind = "soft";
-    else if (["spam", "complaint"].includes(name)) kind = "complaint";
+    else if (
+      ["softbounce", "deferred", "error", "deliveryerror"].includes(name)
+    )
+      kind = "soft";
+    else if (["spam", "complaint", "markasspam"].includes(name))
+      kind = "complaint";
     if (!kind) continue;
     events.push({
       email,
       kind,
       // Brevo reports a human reason, not the remote SMTP status code.
       diagnostic:
-        typeof event.reason === "string" ? event.reason.slice(0, 300) : name,
+        typeof event.reason === "string" ? event.reason.slice(0, 300) : raw,
     });
   }
   return events;

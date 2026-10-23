@@ -174,6 +174,23 @@ test("relay: webhook payloads map to hard, soft and complaint events only", () =
     1,
   );
   assert.deepEqual(relayEventsFromPayload("brevo", { nothing: true }), []);
+
+  // Brevo's documented event names are camelCase, not snake_case.
+  const camel = relayEventsFromPayload("brevo", {
+    items: [
+      { event: "hardBounce", email: "dead@example.com", reason: "550 5.1.1" },
+      {
+        event: "softBounce",
+        email: "full@example.com",
+        reason: "mailbox full",
+      },
+      { event: "delivered", email: "ok@example.com" },
+    ],
+  });
+  assert.deepEqual(
+    camel.map((event) => `${event.email}:${event.kind}`),
+    ["dead@example.com:hard", "full@example.com:soft"],
+  );
 });
 
 async function webhook(

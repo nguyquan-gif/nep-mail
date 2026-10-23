@@ -203,14 +203,14 @@ Brevo, from zero:
    `RELAY_API_KEY`.
 3. **Transactional → Settings → Webhooks → Add**, URL:
    `https://your-app/api/v1/webhooks/brevo?token=<RELAY_WEBHOOK_SECRET>`,
-   events: `hard_bounce`, `soft_bounce`, `spam`, `invalid`, `blocked`,
-   `deferred`. Generate the secret with `openssl rand -hex 32`.
+   events: `hardBounce`, `softBounce`, `spam`, `invalid`, `blocked`,
+   `deferred` (Brevo uses camelCase; the adapter also accepts snake_case). Generate the secret with `openssl rand -hex 32`.
 4. Restart the app. Readiness now needs only an HTTPS origin, `MAIL_FROM` and a
    public unsubscribe URL — the DKIM/MX checks belong to the provider.
 5. Send a campaign to a deliberately broken address and watch the audit log; the
    contact flips to `suppressed` from the webhook, not from a mailbox.
 
-What the webhook does: maps the provider's event names to `hard` / `soft` /
+What the webhook does: maps `hardBounce`/`softBounce`/`spam` to `hard` / `soft` /
 `complaint`, suppresses hard failures and complaints **instance-wide**, ignores
 soft bounces and refuses to create contacts or grant consent. The shared secret
 travels in the URL because Brevo does not sign payloads; the endpoint rejects a
