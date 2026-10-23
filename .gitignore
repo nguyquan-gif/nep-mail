@@ -12,3 +12,4 @@ coverage/
 
 # Local IMAP credentials for scripts/imap-check.mjs
 .env.bounce-test
+.env.relay
