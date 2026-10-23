@@ -91,8 +91,8 @@ No per-contact pricing, no "upgrade to send 5,000 emails", no feature held behin
 a licence key. That only stays true while someone has the evenings to spend on it.
 
 If Nếp Mail replaced something you were paying for, you can send a little back:
-**♥ [Sponsor or donate](docs/SPONSOR.md)** — GitHub Sponsors, Ko-fi, or a VietQR
-bank transfer. The page lists exactly what the money covers and what it does not
+**♥ [Sponsor or donate](docs/SPONSOR.md)** — PayPal, GitHub Sponsors, or a
+VietQR bank transfer (that one costs no fees at either end). The page lists exactly what the money covers and what it does not
 buy (no priority support, no roadmap votes).
 
 If you would rather not pay, the useful free things are: star the repository,

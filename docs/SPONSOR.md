@@ -31,9 +31,15 @@ have: **https://github.com/sponsors/nguyquan-gif**
 (Enrollment is pending — Vietnam is a supported region, but GitHub has to verify
 bank and tax details before the button goes live. Until then the other two work.)
 
-### Ko-fi / PayPal
+### PayPal
 
-For a one-off tip without a GitHub account: **<!-- KO-FI LINK: paste here -->**
+A one-off tip without a GitHub account, from any country:
+
+**https://paypal.me/nepmail**
+
+PayPal keeps a cut (roughly 4.4% + a fixed fee on cross-border payments, plus
+currency conversion when it reaches a Vietnamese bank). If you are in Vietnam,
+the bank transfer below costs nothing at both ends.
 
 ### Bank transfer (Vietnam, VietQR)
 

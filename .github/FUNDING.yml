@@ -2,8 +2,10 @@
 #
 # `custom` works immediately: the Sponsor button appears as soon as this file is
 # on the default branch, pointing at the page below, which lists every option
-# (Sponsors, Ko-fi, VietQR transfer).
-custom: ["https://github.com/nguyquan-gif/nep-mail/blob/master/docs/SPONSOR.md"]
+# (PayPal, Sponsors, VietQR transfer).
+custom:
+  - "https://paypal.me/nepmail"
+  - "https://github.com/nguyquan-gif/nep-mail/blob/master/docs/SPONSOR.md"
 
 # Native GitHub Sponsors button — switches on once enrollment is approved
 # (Vietnam is a supported region; approval needs bank + tax details and 2FA).
