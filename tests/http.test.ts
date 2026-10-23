@@ -93,6 +93,20 @@ test("self-host HTTP: login, forged identity rejection, persistent API writes an
     ((await res.json()) as { contacts: unknown[] }).contacts.length,
     1,
   );
+  // The workspace name lands in every email footer, so it must be correctable.
+  const rename = await fetch(origin + `/api/workspaces/${w}`, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify({ name: "Nếp Studio" }),
+  });
+  assert.equal(rename.status, 200);
+  const renamed = await fetch(origin + `/api/workspaces/${w}`, {
+    headers: { cookie },
+  });
+  assert.equal(
+    ((await renamed.json()) as { workspace: { name: string } }).workspace.name,
+    "Nếp Studio",
+  );
   const page = await fetch(origin + "/", { headers: { cookie } });
   assert.equal(page.status, 200);
   const html = await page.text();

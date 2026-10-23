@@ -1036,6 +1036,22 @@ export async function handleApi(req: Request, c: Context): Promise<Response> {
         deliveryCounts: counts.results,
       });
     }
+    // The workspace name is printed in the footer of every email it sends, so a
+    // typo there follows every recipient until it can be corrected.
+    if (!resource && method === "PATCH") {
+      const p = z
+        .object({ name: z.string().trim().min(2).max(100) })
+        .parse(await body(req));
+      const saved = await q(
+        c,
+        "UPDATE workspaces SET name=? WHERE id=? RETURNING id",
+        p.name,
+        w,
+      ).first();
+      if (!saved) throw new Problem(404, "Không tìm thấy workspace");
+      await audit(c, w, "workspace.renamed", p.name).run();
+      return json({ ok: true });
+    }
     if (resource === "contacts" && method === "POST" && !id) {
       const p = contactSchema.parse(await body(req));
       await c.db.batch([
