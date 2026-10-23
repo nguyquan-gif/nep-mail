@@ -6,7 +6,7 @@ rather own their list than rent an audience.
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-235642)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-10-235642)](#languages)
 [![Tests](https://img.shields.io/badge/tests-46%20passing-235642)](#development)
-[![Status](https://img.shields.io/badge/status-0.3.0--alpha.2-b7793a)](#status)
+[![Status](https://img.shields.io/badge/status-0.3.0--alpha.3-b7793a)](#status)
 
 No Mailchimp, SendGrid, Mailgun or SES account. You run Postfix (or any SMTP
 relay) and keep the contacts in a SQLite file you can copy. Software is free; a
@@ -148,7 +148,7 @@ mean SMTP acceptance, never confirmed inbox delivery.
 
 ## Status
 
-`0.3.0-alpha.2` — a working private pilot. Read the
+`0.3.0-alpha.3` — a working private pilot. Read the
 [test and release report](docs/TEST-REPORT.md) before trusting it with a real
 list. Remaining gates include live SMTP/DNS/PTR validation on an owned domain, a
 warm-up run, an upload/restore drill and an independent security review.

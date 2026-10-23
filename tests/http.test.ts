@@ -110,4 +110,16 @@ test("self-host HTTP: login, forged identity rejection, persistent API writes an
     body: JSON.stringify({ name: "unwanted" }),
   });
   assert.equal(csrf.status, 403);
+  // A mail client may open the opt-out page with `Origin: null`; that endpoint
+  // is authorised by its signed token, so CSRF must not reject it.
+  const unsub = await fetch(origin + "/api/unsubscribe?token=bad", {
+    method: "POST",
+    headers: {
+      origin: "null",
+      "content-type": "application/x-www-form-urlencoded",
+    },
+    body: "confirm=1",
+  });
+  assert.notEqual(unsub.status, 403);
+  assert.equal(unsub.status, 400);
 });

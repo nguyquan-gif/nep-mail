@@ -175,10 +175,25 @@ const server = createServer(async (req, res) => {
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Referrer-Policy", "same-origin");
     res.setHeader("X-Frame-Options", "DENY");
+    // CSRF only matters for cookie-authenticated writes. The unsubscribe page
+    // and the /api/v1 API are authorised by their own token, so an email
+    // client's `Origin: null` must not break them. Also accept the origin the
+    // request actually arrived on: behind a tunnel or reverse proxy the app is
+    // reached by more than one hostname, and comparing only against APP_ORIGIN
+    // locks out everyone using the other one.
+    const selfOrigin = `${origin.startsWith("https:") ? "https" : "http"}://${
+      headers.get("host") || ""
+    }`;
+    const postOrigin = headers.get("origin");
+    const tokenAuthorised =
+      url.pathname === "/api/unsubscribe" ||
+      url.pathname.startsWith("/api/v1/");
     if (
       req.method === "POST" &&
-      headers.get("origin") &&
-      headers.get("origin") !== origin
+      postOrigin &&
+      !tokenAuthorised &&
+      postOrigin !== origin &&
+      postOrigin !== selfOrigin
     ) {
       res.writeHead(403);
       res.end("Cross-origin request rejected");
@@ -189,7 +204,7 @@ const server = createServer(async (req, res) => {
         "content-type": "application/json",
         "cache-control": "no-store",
       });
-      res.end(JSON.stringify({ status: "ok", version: "0.3.0-alpha.2" }));
+      res.end(JSON.stringify({ status: "ok", version: "0.3.0-alpha.3" }));
       return;
     }
     if (url.pathname === "/auth/login" && req.method === "POST") {

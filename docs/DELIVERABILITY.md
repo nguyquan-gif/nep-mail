@@ -229,6 +229,41 @@ Adding another provider means editing the two registries in
 `src/core/relay.ts` (request builder + response reader) and the event map; the
 campaign, queue and suppression code is untouched.
 
+## What a real Gmail inbox reported
+
+Read back over IMAP from a Gmail mailbox on 2026-10-23, sending through the
+relay adapter with `From: xinchao@sayhellovietnam.com`:
+
+```
+Authentication-Results: mx.google.com;
+  dkim=pass header.i=@sayhellovietnam.com header.s=brevo2;
+  spf=pass (…) smtp.mailfrom=bounces-…@gx.d.sender-sib.com
+DKIM-Signature: d=sayhellovietnam.com; s=brevo2; h=from:subject:…:list-unsubscribe:list-unsubscribe-post:…
+List-Unsubscribe: <https://…/api/unsubscribe?token=…>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Return-Path: <bounces-…@gx.d.sender-sib.com>
+```
+
+Reading that correctly:
+
+- **DKIM passes and is aligned** to the From domain, so DMARC passes on DKIM
+  alignment even though…
+- **SPF passes on Brevo's envelope domain**, not on yours (`gx.d.sender-sib.com`).
+  That is normal for a relay and does not need fixing: adding
+  `include:spf.brevo.com` to your own SPF only matters if you later send with
+  your own bounce domain (`Return-Path` on your domain).
+- The standard unsubscribe headers survive the provider and are signed, so
+  Gmail's one-click opt-out works.
+- `p=none` in DMARC means nobody enforces anything. Move to
+  `p=quarantine` once the reports look clean.
+
+Landing in Spam with that header set is a **reputation** problem, not an
+authentication one: a new domain on a shared relay IP, first messages, low
+engagement. What actually moves it: send to people who expect the mail, ask them
+to mark "not spam" and reply, keep volume low and steady, and never send a
+placeholder `List-Unsubscribe` (`https://example.invalid/…`) — a dead opt-out URL
+is a spam signal. The check script now omits the header when no real URL exists.
+
 ## What is still yours to operate
 
 - Outbound port 25, a static IP and matching PTR record.

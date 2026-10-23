@@ -19,9 +19,12 @@ const provider = process.env.RELAY_PROVIDER || "brevo";
 const apiKey = process.env.RELAY_API_KEY || "";
 const from = process.env.MAIL_FROM || "";
 const fromName = process.env.MAIL_FROM_NAME || "";
+// Omit the header entirely when there is no real opt-out URL: a dead
+// `List-Unsubscribe` (placeholder domain) is a deliverability penalty, not a
+// harmless default.
 const unsubscribe = process.env.PUBLIC_UNSUBSCRIBE_ORIGIN
   ? `${process.env.PUBLIC_UNSUBSCRIBE_ORIGIN.replace(/\/$/, "")}/api/unsubscribe?token=check`
-  : "https://example.invalid/unsubscribe";
+  : "";
 
 if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(to)) {
   console.error(
@@ -55,8 +58,14 @@ try {
   const result = await transport.send({
     to,
     subject: "Nếp Mail relay check",
-    html: `<p>This message proves the relay path works.</p><p>Sender: ${from}<br>Provider: ${provider}</p><p style="font-size:12px"><a href="${unsubscribe}">Unsubscribe</a></p>`,
-    text: `Nếp Mail relay check.\nSender: ${from}\nProvider: ${provider}\nUnsubscribe: ${unsubscribe}`,
+    html: `<p>This message proves the relay path works.</p><p>Sender: ${from}<br>Provider: ${provider}</p>${
+      unsubscribe
+        ? `<p style="font-size:12px"><a href="${unsubscribe}">Unsubscribe</a></p>`
+        : ""
+    }`,
+    text: `Nếp Mail relay check.\nSender: ${from}\nProvider: ${provider}${
+      unsubscribe ? `\nUnsubscribe: ${unsubscribe}` : ""
+    }`,
     unsubscribe,
     idempotencyKey: `relay-check-${Date.now()}`,
   });
