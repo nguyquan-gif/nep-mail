@@ -26,6 +26,8 @@ export type Config = {
   liveEnabled?: boolean;
   publicUnsubscribeOrigin?: string;
   unsubscribeSecret?: string;
+  /** Shared secret for provider bounce webhooks (`/api/v1/webhooks/:provider`). */
+  relayWebhookSecret?: string;
   sender?: string;
   transport?: Transport;
   runtime: "sites" | "selfhost" | "test";

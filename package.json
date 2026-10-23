@@ -1,6 +1,6 @@
 {
   "name": "nep-mail",
-  "version": "0.2.0-alpha.2",
+  "version": "0.3.0-alpha.1",
   "private": true,
   "type": "module",
   "license": "AGPL-3.0-or-later",

@@ -23,6 +23,7 @@ import {
   parseBounce,
   type BounceEvent,
 } from "./bounce.ts";
+import { isRelayProvider, relayEventsFromPayload } from "./relay.ts";
 import type { Context, Row, Statement } from "./types.ts";
 import {
   LOCALE_CODES,
@@ -837,6 +838,43 @@ export async function applyBounceEvents(
   return { received: events.length, suppressed };
 }
 
+/** Constant-time-ish comparison for a shared secret. */
+function secretMatches(a: string, b: string): boolean {
+  if (!a || !b || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+/**
+ * Bounce/complaint webhook from a sending relay.
+ *
+ * Providers do not sign their webhooks (Brevo does not), so the URL carries a
+ * shared secret. This endpoint only suppresses addresses; it cannot create
+ * contacts, grant consent or send anything.
+ */
+async function relayWebhook(
+  req: Request,
+  c: Context,
+  url: URL,
+  provider: string,
+) {
+  if (!isRelayProvider(provider)) throw new Problem(404, "Không tìm thấy API");
+  const secret = c.config.relayWebhookSecret;
+  if (!secret || secret.length < 16)
+    throw new Problem(503, "Webhook chưa được cấu hình");
+  if (!secretMatches(url.searchParams.get("token") || "", secret))
+    throw new Problem(401, "Token webhook không hợp lệ");
+  const events = relayEventsFromPayload(provider, await body(req)).slice(
+    0,
+    200,
+  );
+  if (!events.length) return json({ received: 0, suppressed: 0 });
+  return json(
+    await applyBounceEvents(c, events, undefined, `relay:${provider}`),
+  );
+}
+
 async function ingestBounces(req: Request, c: Context) {
   const key = await keyFromRequest(req, c);
   const payload = (await body(req)) as {
@@ -893,6 +931,13 @@ export async function handleApi(req: Request, c: Context): Promise<Response> {
       return await integrate(req, c);
     if (path[0] === "v1" && path[1] === "bounces" && method === "POST")
       return await ingestBounces(req, c);
+    if (
+      path[0] === "v1" &&
+      path[1] === "webhooks" &&
+      path[2] &&
+      method === "POST"
+    )
+      return await relayWebhook(req, c, url, path[2]);
     const user = requireUser(c);
     if (path[0] === "bootstrap" && method === "GET") {
       const ws = (

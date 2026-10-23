@@ -6,6 +6,11 @@ import { smtpTransport } from "./smtp.ts";
 import { session, verifySession, passwordMatches } from "./auth.ts";
 import { handleApi, processCampaign } from "../src/core/api.ts";
 import { createBouncePoller, imapOptionsFromEnv } from "./imap.ts";
+import {
+  isRelayProvider,
+  relayTransport,
+  type RelayProvider,
+} from "../src/core/relay.ts";
 import type { Context } from "../src/core/types.ts";
 import {
   bestLocale,
@@ -40,19 +45,34 @@ const live = process.env.LIVE_SEND === "true",
   capture = process.env.CAPTURE_MODE !== "false";
 if (live && capture)
   throw new Error("Set CAPTURE_MODE=false explicitly before LIVE_SEND=true");
+// A relay sends through a provider's HTTP API: no port 25, no DKIM key here
+// (the provider signs for the verified domain), bounces arrive by webhook.
+const relayProvider = process.env.RELAY_PROVIDER || "";
+if (relayProvider && !isRelayProvider(relayProvider))
+  throw new Error("RELAY_PROVIDER must be one of: brevo");
+const relayEnabled = isRelayProvider(relayProvider);
+if (relayEnabled && !process.env.RELAY_API_KEY)
+  throw new Error("RELAY_API_KEY is required when RELAY_PROVIDER is set");
 if (
   live &&
-  (!process.env.DKIM_PRIVATE_KEY_FILE ||
-    !process.env.MAIL_DOMAIN ||
-    !process.env.MAIL_FROM ||
+  (!process.env.MAIL_FROM ||
     !process.env.PUBLIC_UNSUBSCRIBE_ORIGIN ||
     origin.startsWith("http:"))
 )
   throw new Error(
-    "Live send requires HTTPS origin, MAIL_FROM, MAIL_DOMAIN, DKIM_PRIVATE_KEY_FILE and PUBLIC_UNSUBSCRIBE_ORIGIN",
+    "Live send requires an HTTPS APP_ORIGIN, MAIL_FROM and PUBLIC_UNSUBSCRIBE_ORIGIN",
   );
 if (
   live &&
+  !relayEnabled &&
+  (!process.env.DKIM_PRIVATE_KEY_FILE || !process.env.MAIL_DOMAIN)
+)
+  throw new Error(
+    "Direct SMTP requires MAIL_DOMAIN and DKIM_PRIVATE_KEY_FILE; set RELAY_PROVIDER to send through an HTTP relay instead",
+  );
+if (
+  live &&
+  !relayEnabled &&
   (!/^[^\s<>@]+@[^\s<>@]+\.[a-z]{2,}$/i.test(process.env.MAIL_FROM || "") ||
     process.env.MAIL_FROM!.split("@")[1] !== process.env.MAIL_DOMAIN ||
     /\.(invalid|test|localhost)$/.test(process.env.MAIL_DOMAIN || ""))
@@ -60,19 +80,39 @@ if (
   throw new Error(
     "Live MAIL_FROM must be a real address aligned with MAIL_DOMAIN",
   );
-const transport = smtpTransport({
-  host: process.env.SMTP_HOST || "mailpit",
-  port: Number(process.env.SMTP_PORT || 1025),
-  sender: process.env.MAIL_FROM || "hello@example.invalid",
-  capture,
-  dkim: process.env.DKIM_PRIVATE_KEY_FILE
-    ? {
-        domainName: process.env.MAIL_DOMAIN!,
-        keySelector: process.env.DKIM_SELECTOR || "nep",
-        privateKey: readFileSync(process.env.DKIM_PRIVATE_KEY_FILE, "utf8"),
-      }
-    : undefined,
-});
+if (
+  live &&
+  relayEnabled &&
+  !/^[^\s<>@]+@[^\s<>@]+\.[a-z]{2,}$/i.test(process.env.MAIL_FROM || "")
+)
+  throw new Error("MAIL_FROM must be the sender verified at the relay");
+
+const transport =
+  live && relayEnabled
+    ? relayTransport({
+        provider: relayProvider as RelayProvider,
+        apiKey: process.env.RELAY_API_KEY!,
+        sender: {
+          email: process.env.MAIL_FROM!,
+          name: process.env.MAIL_FROM_NAME || undefined,
+        },
+      })
+    : smtpTransport({
+        host: process.env.SMTP_HOST || "mailpit",
+        port: Number(process.env.SMTP_PORT || 1025),
+        sender: process.env.MAIL_FROM || "hello@example.invalid",
+        capture,
+        dkim: process.env.DKIM_PRIVATE_KEY_FILE
+          ? {
+              domainName: process.env.MAIL_DOMAIN!,
+              keySelector: process.env.DKIM_SELECTOR || "nep",
+              privateKey: readFileSync(
+                process.env.DKIM_PRIVATE_KEY_FILE,
+                "utf8",
+              ),
+            }
+          : undefined,
+      });
 const context: Context = {
   db,
   user: {
@@ -86,6 +126,7 @@ const context: Context = {
     liveEnabled: live,
     publicUnsubscribeOrigin: process.env.PUBLIC_UNSUBSCRIBE_ORIGIN,
     unsubscribeSecret: process.env.UNSUBSCRIBE_SECRET,
+    relayWebhookSecret: process.env.RELAY_WEBHOOK_SECRET,
     transport,
     sender: process.env.MAIL_FROM,
   },
@@ -148,7 +189,7 @@ const server = createServer(async (req, res) => {
         "content-type": "application/json",
         "cache-control": "no-store",
       });
-      res.end(JSON.stringify({ status: "ok", version: "0.2.0-alpha.2" }));
+      res.end(JSON.stringify({ status: "ok", version: "0.3.0-alpha.1" }));
       return;
     }
     if (url.pathname === "/auth/login" && req.method === "POST") {

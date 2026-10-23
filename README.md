@@ -5,8 +5,8 @@ rather own their list than rent an audience.
 
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-235642)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-10-235642)](#languages)
-[![Tests](https://img.shields.io/badge/tests-41%20passing-235642)](#development)
-[![Status](https://img.shields.io/badge/status-0.2.0--alpha.2-b7793a)](#status)
+[![Tests](https://img.shields.io/badge/tests-46%20passing-235642)](#development)
+[![Status](https://img.shields.io/badge/status-0.3.0--alpha.1-b7793a)](#status)
 
 No Mailchimp, SendGrid, Mailgun or SES account. You run Postfix (or any SMTP
 relay) and keep the contacts in a SQLite file you can copy. Software is free; a
@@ -59,12 +59,14 @@ preference, while each campaign keeps its own email language.</sub>
   **in-app DKIM key generator** that never stores the private key.
 - **Bounce and complaint ingestion** from raw DSN/ARF messages, a provider
   webhook, or directly over IMAP, with automatic suppression.
+- **HTTP relay adapter** for people without port 25: send through Brevo's API and
+  receive bounces by webhook — no MTA, no mailbox, no IMAP.
 - Signed unsubscribe links, confirmation on GET and opt-out on POST; suppression
   rechecked before SMTP handoff.
 - Workspace integration tokens stored hashed; idempotent Nếp HR / Nếp Business
   contact events; key revocation and audit history.
 - SQLite persistence/migrations, session auth, CSRF origin checks, login
-  throttling, 41 automated core/HTTP/SMTP/i18n/IMAP tests.
+  throttling, 46 automated core/HTTP/SMTP/i18n/IMAP/relay tests.
 
 ## Quickstart (Docker)
 
@@ -146,7 +148,7 @@ mean SMTP acceptance, never confirmed inbox delivery.
 
 ## Status
 
-`0.2.0-alpha.2` — a working private pilot. Read the
+`0.3.0-alpha.1` — a working private pilot. Read the
 [test and release report](docs/TEST-REPORT.md) before trusting it with a real
 list. Remaining gates include live SMTP/DNS/PTR validation on an owned domain, a
 warm-up run, an upload/restore drill and an independent security review.

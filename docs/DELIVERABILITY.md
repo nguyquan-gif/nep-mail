@@ -177,6 +177,58 @@ asserts the contact became `suppressed` with an audit row from `imap`, and that 
 second poll reads nothing. Hosts and ports can be overridden with `E2E_SMTP_HOST`,
 `E2E_SMTP_PORT`, `E2E_IMAP_HOST`, `E2E_IMAP_PORT`, `E2E_IMAP_USER`.
 
+## Free path: HTTP relay + webhook (no VPS, no port 25)
+
+Most people cannot send from their own IP: port 25 is blocked, the address is
+dynamic, and reputation starts at zero. The relay adapter sends through a
+provider's HTTP API instead, and the provider reports bounces to a webhook — so
+there is no MTA, no mailbox and no IMAP to configure.
+
+```ini
+RELAY_PROVIDER=brevo
+RELAY_API_KEY=xkeysib-…
+MAIL_FROM=newsletter@your-domain.vn      # must be verified at the provider
+MAIL_FROM_NAME=Nếp Mail
+RELAY_WEBHOOK_SECRET=<32+ random characters>
+LIVE_SEND=true
+CAPTURE_MODE=false
+```
+
+Brevo, from zero:
+
+1. Create an account, then **Senders & Domains → Domains → Add a domain** and
+   publish the DKIM/SPF records Brevo shows. The provider signs for your domain,
+   so `DKIM_PRIVATE_KEY_FILE` is not used in this mode.
+2. **SMTP & API → API Keys → Create**, copy the `xkeysib-…` key into
+   `RELAY_API_KEY`.
+3. **Transactional → Settings → Webhooks → Add**, URL:
+   `https://your-app/api/v1/webhooks/brevo?token=<RELAY_WEBHOOK_SECRET>`,
+   events: `hard_bounce`, `soft_bounce`, `spam`, `invalid`, `blocked`,
+   `deferred`. Generate the secret with `openssl rand -hex 32`.
+4. Restart the app. Readiness now needs only an HTTPS origin, `MAIL_FROM` and a
+   public unsubscribe URL — the DKIM/MX checks belong to the provider.
+5. Send a campaign to a deliberately broken address and watch the audit log; the
+   contact flips to `suppressed` from the webhook, not from a mailbox.
+
+What the webhook does: maps the provider's event names to `hard` / `soft` /
+`complaint`, suppresses hard failures and complaints **instance-wide**, ignores
+soft bounces and refuses to create contacts or grant consent. The shared secret
+travels in the URL because Brevo does not sign payloads; the endpoint rejects a
+missing or wrong token and is useless without it.
+
+Trade-offs, stated plainly:
+
+- Free tiers are small (Brevo ≈300 recipients/day, Mailjet ≈200, Resend ≈100 —
+  check current terms before planning volume) and marketing use may need the
+  provider's approval.
+- The provider owns IP reputation, so a suspension stops your sending.
+- It is no longer "no third party". Direct SMTP (`RELAY_PROVIDER` unset) remains
+  the path that keeps everything on your own infrastructure.
+
+Adding another provider means editing the two registries in
+`src/core/relay.ts` (request builder + response reader) and the event map; the
+campaign, queue and suppression code is untouched.
+
 ## What is still yours to operate
 
 - Outbound port 25, a static IP and matching PTR record.
