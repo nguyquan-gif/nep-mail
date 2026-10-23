@@ -1,11 +1,14 @@
 # Sponsorship.
 #
-# GitHub Sponsors must be enabled for the account first (Stripe + tax profile,
-# takes days to approve). Until then this file is inert: the Sponsor button only
-# appears once the handle is actually enrolled.
+# `custom` works immediately: the Sponsor button appears as soon as this file is
+# on the default branch, pointing at the page below, which lists every option
+# (Sponsors, Ko-fi, VietQR transfer).
+custom: ["https://github.com/nguyquan-gif/nep-mail/blob/master/docs/SPONSOR.md"]
+
+# Native GitHub Sponsors button — switches on once enrollment is approved
+# (Vietnam is a supported region; approval needs bank + tax details and 2FA).
 github: nguyquan-gif
 
-# Other options — uncomment and fill in when they exist:
+# Uncomment and fill in when the accounts exist:
 # ko_fi: your-handle
 # buy_me_a_coffee: your-handle
-# custom: ["https://your-page.example/donate"]

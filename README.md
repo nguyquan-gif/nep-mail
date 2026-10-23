@@ -7,6 +7,7 @@ rather own their list than rent an audience.
 [![Languages](https://img.shields.io/badge/languages-10-235642)](#languages)
 [![Tests](https://img.shields.io/badge/tests-46%20passing-235642)](#development)
 [![Status](https://img.shields.io/badge/status-0.3.0--alpha.4-b7793a)](#status)
+[![Sponsor](https://img.shields.io/badge/sponsor-%E2%99%A5%20keep%20it%20free-db61a2)](docs/SPONSOR.md)
 
 No Mailchimp, SendGrid, Mailgun or SES account. You run Postfix (or any SMTP
 relay) and keep the contacts in a SQLite file you can copy. Software is free; a
@@ -67,6 +68,21 @@ preference, while each campaign keeps its own email language.</sub>
   contact events; key revocation and audit history.
 - SQLite persistence/migrations, session auth, CSRF origin checks, login
   throttling, 46 automated core/HTTP/SMTP/i18n/IMAP/relay tests.
+
+## Keep it free
+
+This is not a product with a free tier — there is one tier, and it is all of it.
+No per-contact pricing, no "upgrade to send 5,000 emails", no feature held behind
+a licence key. That only stays true while someone has the evenings to spend on it.
+
+If Nếp Mail replaced something you were paying for, you can send a little back:
+**♥ [Sponsor or donate](docs/SPONSOR.md)** — GitHub Sponsors, Ko-fi, or a VietQR
+bank transfer. The page lists exactly what the money covers and what it does not
+buy (no priority support, no roadmap votes).
+
+If you would rather not pay, the useful free things are: star the repository,
+report a bug with the version from `/healthz`, or fix a translation in
+`src/core/locales/`.
 
 ## Quickstart (Docker)
 
@@ -173,13 +189,6 @@ and [docs/RELEASE.md](docs/RELEASE.md).
 [Integration contract](docs/INTEGRATIONS.md) ·
 [Test and release status](docs/TEST-REPORT.md) · [Launch kit](docs/LAUNCH.md) ·
 [Security](SECURITY.md)
-
-## Support the project
-
-Nếp Mail is free and self-hostable with no paid tier. If it saves you a
-subscription, you can sponsor development — see the **Sponsor** button, or
-[docs/LAUNCH.md](docs/LAUNCH.md) for what the money actually pays for. Donations
-buy time, not features: nothing here is behind a paywall, ever.
 
 ## License
 
