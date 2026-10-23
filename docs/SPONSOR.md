@@ -37,17 +37,21 @@ For a one-off tip without a GitHub account: **<!-- KO-FI LINK: paste here -->**
 
 ### Bank transfer (Vietnam, VietQR)
 
-No fees, arrives instantly. Scan the QR in the repository
-(`docs/vietqr.png`) with any Vietnamese banking app, or transfer manually:
+No platform fee, arrives instantly, works from any Vietnamese banking app. Scan
+the code below, or transfer manually:
+
+![VietQR — TPBank](vietqr.png)
 
 ```
-Ngân hàng:    <!-- điền tên ngân hàng -->
-Số tài khoản: <!-- điền số tài khoản -->
-Chủ tài khoản: <!-- điền tên -->
-Nội dung:     NEP MAIL
+Ngân hàng:     TPBank
+Số tài khoản:  33522938888
+Chủ tài khoản: NGUYEN MANH QUAN
+Nội dung:      NEP MAIL
 ```
 
-<!-- Delete this note once the three blocks above are filled in. -->
+This is a receiving account: the QR can only send money to it, never take money
+out. It is published deliberately, because a bank transfer is the only option
+here that costs neither side a fee.
 
 ## If you would rather not pay
 
