@@ -5,7 +5,7 @@ rather own their list than rent an audience.
 
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-235642)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-10-235642)](#languages)
-[![Tests](https://img.shields.io/badge/tests-50%20passing-235642)](#development)
+[![Tests](https://img.shields.io/badge/tests-53%20passing-235642)](#development)
 [![Status](https://img.shields.io/badge/status-0.4.0--alpha.1-b7793a)](#status)
 [![Sponsor](https://img.shields.io/badge/sponsor-%E2%99%A5%20keep%20it%20free-db61a2)](docs/SPONSOR.md)
 
@@ -84,7 +84,7 @@ double opt-in link. The subscriber never needs an account.</sub>
 - Workspace integration tokens stored hashed; idempotent Nếp HR / Nếp Business
   contact events; key revocation and audit history.
 - SQLite persistence/migrations, session auth, CSRF origin checks, login
-  throttling, 50 automated core/HTTP/SMTP/i18n/IMAP/relay/test-send tests.
+  throttling, 53 automated core/HTTP/SMTP/i18n/IMAP/relay/test-send/retry tests.
 
 ## Keep it free
 
@@ -104,7 +104,7 @@ report a bug with the version from `/healthz`, or fix a translation in
 ## Quickstart (Docker)
 
 ```sh
-git clone <this repository> nep-mail && cd nep-mail
+git clone https://github.com/nguyquan-gif/nep-mail.git && cd nep-mail
 node scripts/setup.mjs        # writes .env with independent random secrets
 docker compose up -d --build  # app on :3000, Mailpit on :8025
 ```
