@@ -33,12 +33,27 @@ What that means in practice:
 
 ## Screens
 
-![Nếp Mail dashboard in English](docs/screenshots/dashboard-en.png)
+![Overview after a real relay run](docs/screenshots/overview-vi.png)
 
-<sub>The same workspace in Vietnamese — the interface language is a per-browser
-preference, while each campaign keeps its own email language.</sub>
+<sub>Overview of an instance that has actually sent: 6 contacts, 5 with recorded
+consent, 15 handoffs accepted by the provider. The interface language is a
+per-browser choice; each campaign keeps its own email language.</sub>
 
-![Nếp Mail dashboard in Vietnamese](docs/screenshots/dashboard-vi.png)
+![Campaign list](docs/screenshots/campaigns-vi.png)
+
+<sub>Campaigns store the recipient snapshot at queue time and a per-recipient
+status afterwards, so re-running one never silently sends twice.</sub>
+
+![Starter templates](docs/screenshots/templates-vi.png)
+
+<sub>Four starter templates, rendered to escaped HTML with a plain-text twin, a
+preheader and an unsubscribe footer — preview on desktop and mobile before
+sending.</sub>
+
+![Public signup form](docs/screenshots/signup-vi.png)
+
+<sub>The public sign-up form: honeypot, rate limit, and a signed 48-hour
+double opt-in link. The subscriber never needs an account.</sub>
 
 ## What works
 
