@@ -25,7 +25,10 @@ const c = await post(`workspaces/${w.id}/campaigns`, {
   body: "This email must only reach the local capture mailbox.",
   category: "marketing",
 });
-await post(`workspaces/${w.id}/campaigns/${c.id}/test`, {});
+// The capture stack accepts any recipient; this address never leaves the host.
+await post(`workspaces/${w.id}/campaigns/${c.id}/test`, {
+  to: "smoke@example.invalid",
+});
 const inbox = await fetch("http://localhost:8025/api/v1/messages");
 const messages = await inbox.json();
 if (

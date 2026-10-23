@@ -148,7 +148,21 @@ const loginPage = (locale: LocaleCode, error = "") =>
 const failedLogins = new Map<string, { n: number; until: number }>();
 const server = createServer(async (req, res) => {
   try {
-    const url = new URL(req.url || "/", origin);
+    // Parse against the host the client actually used. Using APP_ORIGIN here
+    // made the core's same-origin check compare a tunnel hostname against a
+    // localhost request and reject every write.
+    const requestProto =
+      String(req.headers["x-forwarded-proto"] || "")
+        .split(",")[0]
+        .trim() ||
+      ((req.socket as unknown as { encrypted?: boolean }).encrypted
+        ? "https"
+        : "http");
+    const requestHost = String(req.headers["host"] || "");
+    const url = new URL(
+      req.url || "/",
+      requestHost ? `${requestProto}://${requestHost}` : origin,
+    );
     const headers = new Headers();
     for (const [k, v] of Object.entries(req.headers)) {
       if (v) headers.set(k, Array.isArray(v) ? v.join(",") : v);
@@ -181,9 +195,7 @@ const server = createServer(async (req, res) => {
     // request actually arrived on: behind a tunnel or reverse proxy the app is
     // reached by more than one hostname, and comparing only against APP_ORIGIN
     // locks out everyone using the other one.
-    const selfOrigin = `${origin.startsWith("https:") ? "https" : "http"}://${
-      headers.get("host") || ""
-    }`;
+    const selfOrigin = `${requestProto}://${headers.get("host") || ""}`;
     const postOrigin = headers.get("origin");
     const tokenAuthorised =
       url.pathname === "/api/unsubscribe" ||
