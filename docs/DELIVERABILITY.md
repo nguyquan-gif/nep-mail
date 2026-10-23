@@ -133,14 +133,32 @@ NEP_MAIL_URL=https://mail.example.vn NEP_MAIL_KEY=nep_… \
 and sends nothing. `--apply` posts each raw message to `/api/v1/bounces` and only
 then marks it seen, so a failed POST is retried on the next run.
 
-Gmail notes: enable 2-Step Verification, create an **App password**, and keep IMAP
-enabled in Gmail settings. Gmail exposes folders as `[Gmail]/All Mail`,
-`[Gmail]/Spam`; `INBOX` is where DSNs arrive. Zoho uses `imap.zoho.com:993` and an
-app-specific password as well.
+Gmail notes, from a verified run: enable 2-Step Verification, create an **App
+password** (16 characters, paste it without spaces), and leave IMAP enabled.
+Gmail lists folders under `[Gmail]/…` and **localises their names** to the account
+language (`[Gmail]/Thư đã gửi`, `[Gmail]/Tất cả thư`), so match on the special-use
+flag or rename the label you filter into. Use a **dedicated account**: the poller
+marks every unseen message seen, including personal mail. A Gmail filter that
+moves DSNs into a label, plus `BOUNCE_IMAP_MAILBOX=<label>`, keeps it contained.
 
-To generate a genuine bounce for testing, send any message to
-`bounce@simulator.amazonses.com` — Amazon's mailbox simulator returns a real DSN
-to the envelope sender within a minute, no AWS account required.
+Zoho notes: `imap.zoho.com:993`, and IMAP must be enabled under Settings → Mail
+Accounts. **The free plan does not include IMAP/POP** for new sign-ups; Zoho
+answers a disabled account with "You are yet to enable IMAP for your account".
+
+Generating a bounce to test with is harder than it looks: an address that does
+not exist usually fails **synchronously** at RCPT, so your own client sees the
+550 and no DSN is ever generated. A DSN only exists when a server _accepts_ the
+message and bounces it later. Practical options:
+
+- Send to a real address on a domain whose mailbox is full or disabled.
+- Send through the Postfix in `compose.direct.yaml` to a domain that accepts then
+  bounces; the DSN lands in the local `postmaster` mailbox.
+- For pipeline testing only, deliver a standards-shaped DSN (multipart/report +
+  `message/delivery-status`) to the mailbox over SMTP; the poller cannot tell the
+  difference, and this is how `scripts/imap-check.mjs` was verified against Gmail.
+
+Note: `bounce@simulator.amazonses.com` only answers **SES senders**. From any
+other MTA the message is accepted silently and no DSN comes back.
 
 ### Verifying the poller without your own mail
 
