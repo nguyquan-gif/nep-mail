@@ -82,4 +82,6 @@ The production dependency audit reported zero known advisories for the locked pr
 No real contacts, credentials from other projects, or Internet email deliveries were used. A successful build or SMTP acceptance must not be described as delivery to inbox or production release. 26. No command is issued while a FETCH response is still streaming — the fake
 client rejects that ordering because real IMAP servers drop the connection. 27. A relay webhook requires its shared secret, maps only bounce/complaint events,
 suppresses existing contacts instance-wide, and cannot create contacts or
-grant consent.
+grant consent. 28. A test send delivers to the address given, works in live and capture mode, is
+capped at five per workspace per ten minutes, and creates no contact,
+delivery or suppression row.

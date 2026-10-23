@@ -440,4 +440,13 @@ export const de: Pack = {
   "Đổi tên workspace": "Workspace umbenennen",
   "Đã đổi tên workspace": "Workspace umbenannt",
   "Tên workspace quá ngắn": "Der Workspace-Name ist zu kurz",
+  "Email nhận thử": "Test-E-Mail",
+  "Gửi thử": "Test senden",
+  "Đã gửi thử tới {email}": "Test an {email} gesendet",
+  "Lưu bản nháp trước khi gửi thử":
+    "Entwurf speichern, bevor du einen Test sendest",
+  "Địa chỉ email không hợp lệ": "Ungültige E-Mail-Adresse",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "5 Tests in 10 Minuten — später erneut versuchen",
+  "Chưa cấu hình cách gửi thư": "Kein Versandweg konfiguriert",
 };

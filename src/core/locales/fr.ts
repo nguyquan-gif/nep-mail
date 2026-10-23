@@ -445,4 +445,13 @@ export const fr: Pack = {
   "Đổi tên workspace": "Renommer l’espace",
   "Đã đổi tên workspace": "Espace renommé",
   "Tên workspace quá ngắn": "Le nom de l’espace est trop court",
+  "Email nhận thử": "Email de test",
+  "Gửi thử": "Envoyer un test",
+  "Đã gửi thử tới {email}": "Test envoyé à {email}",
+  "Lưu bản nháp trước khi gửi thử":
+    "Enregistrez le brouillon avant d’envoyer un test",
+  "Địa chỉ email không hợp lệ": "Adresse email invalide",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "5 tests en 10 minutes — réessayez plus tard",
+  "Chưa cấu hình cách gửi thư": "Aucun moyen d’envoi configuré",
 };

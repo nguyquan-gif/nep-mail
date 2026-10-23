@@ -440,4 +440,12 @@ export const ja: Pack = {
   "Đổi tên workspace": "ワークスペース名を変更",
   "Đã đổi tên workspace": "ワークスペース名を変更しました",
   "Tên workspace quá ngắn": "名前が短すぎます",
+  "Email nhận thử": "テスト送信先メール",
+  "Gửi thử": "テスト送信",
+  "Đã gửi thử tới {email}": "{email} にテストを送信しました",
+  "Lưu bản nháp trước khi gửi thử": "テスト送信の前に下書きを保存してください",
+  "Địa chỉ email không hợp lệ": "メールアドレスが無効です",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "10分間に5回テスト済み。しばらくしてから再試行してください",
+  "Chưa cấu hình cách gửi thư": "送信方法が設定されていません",
 };

@@ -420,4 +420,12 @@ export const zh: Pack = {
   "Đổi tên workspace": "重命名工作区",
   "Đã đổi tên workspace": "工作区已重命名",
   "Tên workspace quá ngắn": "名称太短",
+  "Email nhận thử": "测试收件邮箱",
+  "Gửi thử": "发送测试",
+  "Đã gửi thử tới {email}": "测试邮件已发送至 {email}",
+  "Lưu bản nháp trước khi gửi thử": "发送测试前请先保存草稿",
+  "Địa chỉ email không hợp lệ": "邮箱地址无效",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "10 分钟内已测试 5 次，请稍后再试",
+  "Chưa cấu hình cách gửi thư": "未配置发送方式",
 };

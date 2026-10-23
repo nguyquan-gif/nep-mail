@@ -435,4 +435,12 @@ export const ko: Pack = {
   "Đổi tên workspace": "워크스페이스 이름 변경",
   "Đã đổi tên workspace": "워크스페이스 이름을 변경했습니다",
   "Tên workspace quá ngắn": "이름이 너무 짧습니다",
+  "Email nhận thử": "테스트 수신 이메일",
+  "Gửi thử": "테스트 발송",
+  "Đã gửi thử tới {email}": "{email}로 테스트를 보냈습니다",
+  "Lưu bản nháp trước khi gửi thử": "테스트 발송 전에 초안을 저장하세요",
+  "Địa chỉ email không hợp lệ": "이메일 주소가 올바르지 않습니다",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "10분에 5회 테스트했습니다. 잠시 후 다시 시도하세요",
+  "Chưa cấu hình cách gửi thư": "발송 방법이 설정되지 않았습니다",
 };

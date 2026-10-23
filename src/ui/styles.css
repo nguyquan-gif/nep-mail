@@ -2340,3 +2340,19 @@ tbody tr:hover {
     width: 40px;
   }
 }
+
+/* Test-send control in the campaign editor */
+.test-send {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.test-send input {
+  font: inherit;
+  font-size: 12px;
+  padding: 7px 9px;
+  min-width: 190px;
+  border: 1px solid #dce4d7;
+  border-radius: 7px;
+  background: #fff;
+}

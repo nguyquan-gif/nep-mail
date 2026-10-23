@@ -2155,7 +2155,9 @@ export default function App({
                 setEditor(null);
               notice(
                 a === "test"
-                  ? t("Đã gửi vào hộp thư thử cục bộ")
+                  ? t("Đã gửi thử tới {email}", {
+                      email: String(result.to || ""),
+                    })
                   : a === "queue"
                     ? t(
                         "Đã xếp hàng {n} người nhận. Gửi chỉ chạy khi cấu hình sẵn sàng.",
@@ -2436,6 +2438,7 @@ function CampaignEditor({
     [pre, setPre] = useState<Item | null>(null),
     [preError, setPreError] = useState(""),
     [schedule, setSchedule] = useState(""),
+    [testTo, setTestTo] = useState(""),
     [queueConfirm, setQueueConfirm] = useState(false);
   const editable = canWrite && (!value.status || value.status === "draft");
   const rendered = renderEmail(
@@ -2667,15 +2670,38 @@ function CampaignEditor({
           >
             <Download size={16} /> HTML
           </button>
-          {value.id && delivery?.captureAvailable && canProcess && (
-            <button
-              className="button"
-              disabled={busy || dirty}
-              onClick={() => onAction("test")}
-            >
-              {t("Gửi vào hộp thư thử")}
-            </button>
-          )}
+          {value.id &&
+            canProcess &&
+            (delivery?.liveEnabled || delivery?.captureAvailable) && (
+              <form
+                className="test-send"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!testTo.trim()) return;
+                  onAction("test", { to: testTo.trim() });
+                }}
+              >
+                <input
+                  type="email"
+                  required
+                  maxLength={200}
+                  aria-label={t("Email nhận thử")}
+                  placeholder={t("Email nhận thử")}
+                  value={testTo}
+                  onChange={(e) => setTestTo(e.target.value)}
+                  disabled={busy}
+                />
+                <button
+                  className="button"
+                  disabled={busy || dirty || !testTo.trim()}
+                  title={
+                    dirty ? t("Lưu bản nháp trước khi gửi thử") : undefined
+                  }
+                >
+                  {t("Gửi thử")}
+                </button>
+              </form>
+            )}
           {editable && (
             <button
               form="campaign-form"

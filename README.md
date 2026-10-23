@@ -5,8 +5,8 @@ rather own their list than rent an audience.
 
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-235642)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-10-235642)](#languages)
-[![Tests](https://img.shields.io/badge/tests-46%20passing-235642)](#development)
-[![Status](https://img.shields.io/badge/status-0.3.0--alpha.4-b7793a)](#status)
+[![Tests](https://img.shields.io/badge/tests-50%20passing-235642)](#development)
+[![Status](https://img.shields.io/badge/status-0.4.0--alpha.1-b7793a)](#status)
 [![Sponsor](https://img.shields.io/badge/sponsor-%E2%99%A5%20keep%20it%20free-db61a2)](docs/SPONSOR.md)
 
 No Mailchimp, SendGrid, Mailgun or SES account. You run Postfix (or any SMTP
@@ -71,6 +71,8 @@ double opt-in link. The subscriber never needs an account.</sub>
   conditional delivery claims.
 - Self-host worker; local SMTP capture; opt-in direct SMTP with DKIM signing and
   one-click unsubscribe headers.
+- **Test send to any address in live mode** — the campaign as it will arrive, capped at
+  five per ten minutes so a preview cannot burn the provider's quota.
 - **Domain readiness checks** (SPF, DKIM, DMARC, MX over DNS-over-HTTPS) and an
   **in-app DKIM key generator** that never stores the private key.
 - **Bounce and complaint ingestion** from raw DSN/ARF messages, a provider
@@ -82,7 +84,7 @@ double opt-in link. The subscriber never needs an account.</sub>
 - Workspace integration tokens stored hashed; idempotent Nếp HR / Nếp Business
   contact events; key revocation and audit history.
 - SQLite persistence/migrations, session auth, CSRF origin checks, login
-  throttling, 46 automated core/HTTP/SMTP/i18n/IMAP/relay tests.
+  throttling, 50 automated core/HTTP/SMTP/i18n/IMAP/relay/test-send tests.
 
 ## Keep it free
 
@@ -179,7 +181,7 @@ mean SMTP acceptance, never confirmed inbox delivery.
 
 ## Status
 
-`0.3.0-alpha.4` — a working private pilot. Read the
+`0.4.0-alpha.1` — a working private pilot. Read the
 [test and release report](docs/TEST-REPORT.md) before trusting it with a real
 list. Remaining gates include live SMTP/DNS/PTR validation on an owned domain, a
 warm-up run, an upload/restore drill and an independent security review.

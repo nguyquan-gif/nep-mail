@@ -445,4 +445,13 @@ export const es: Pack = {
   "Đổi tên workspace": "Cambiar el nombre del espacio",
   "Đã đổi tên workspace": "Espacio renombrado",
   "Tên workspace quá ngắn": "El nombre del espacio es demasiado corto",
+  "Email nhận thử": "Email de prueba",
+  "Gửi thử": "Enviar prueba",
+  "Đã gửi thử tới {email}": "Prueba enviada a {email}",
+  "Lưu bản nháp trước khi gửi thử":
+    "Guarda el borrador antes de enviar una prueba",
+  "Địa chỉ email không hợp lệ": "Dirección de email no válida",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "5 envíos de prueba en 10 minutos: inténtalo más tarde",
+  "Chưa cấu hình cách gửi thư": "No hay un método de envío configurado",
 };

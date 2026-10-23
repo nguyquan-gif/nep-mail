@@ -436,4 +436,12 @@ export const en: Pack = {
   "Đổi tên workspace": "Rename workspace",
   "Đã đổi tên workspace": "Workspace renamed",
   "Tên workspace quá ngắn": "Workspace name is too short",
+  "Email nhận thử": "Test recipient email",
+  "Gửi thử": "Send test",
+  "Đã gửi thử tới {email}": "Test email sent to {email}",
+  "Lưu bản nháp trước khi gửi thử": "Save the draft before sending a test",
+  "Địa chỉ email không hợp lệ": "Invalid email address",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "5 test sends in 10 minutes — try again shortly",
+  "Chưa cấu hình cách gửi thư": "No sending method is configured",
 };

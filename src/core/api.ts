@@ -838,6 +838,26 @@ export async function applyBounceEvents(
   return { received: events.length, suppressed };
 }
 
+/**
+ * Test sends cost real provider quota in live mode, so they are capped per
+ * workspace instead of being unlimited. In-memory on purpose: it guards against
+ * a double click or a stuck loop, not a determined attacker.
+ */
+const testSends = new Map<string, number[]>();
+export function allowTestSend(workspace: string, nowMs = Date.now()): boolean {
+  const windowMs = 10 * 60_000;
+  const hits = (testSends.get(workspace) || []).filter(
+    (t) => nowMs - t < windowMs,
+  );
+  if (hits.length >= 5) {
+    testSends.set(workspace, hits);
+    return false;
+  }
+  hits.push(nowMs);
+  testSends.set(workspace, hits);
+  return true;
+}
+
 /** Constant-time-ish comparison for a shared secret. */
 function secretMatches(a: string, b: string): boolean {
   if (!a || !b || a.length !== b.length) return false;
@@ -1147,31 +1167,51 @@ export async function handleApi(req: Request, c: Context): Promise<Response> {
       if (action === "test" && method === "POST") {
         await authorize(c, w, true, true);
         if (
-          !c.config.captureAvailable ||
-          c.config.runtime !== "selfhost" ||
-          !c.config.transport
+          !c.config.transport ||
+          (!c.config.liveEnabled && !c.config.captureAvailable)
         )
-          throw new Problem(409, "Gửi thử chỉ mở ở chế độ hộp thư cục bộ");
+          throw new Problem(409, "Chưa cấu hình cách gửi thư");
+        const p = z
+          .object({
+            to: z
+              .string()
+              .trim()
+              .max(200)
+              .regex(
+                /^[^\s<>@]+@[^\s<>@]+\.[a-z]{2,}$/i,
+                "Địa chỉ email không hợp lệ",
+              ),
+          })
+          .parse(await body(req));
+        if (!allowTestSend(w))
+          throw new Problem(429, "Đã gửi thử 5 lần trong 10 phút, thử lại sau");
         const ws = await q(
           c,
           "SELECT name FROM workspaces WHERE id=?",
           w,
         ).first();
+        // The opt-out link is a preview token: it opens the real page but has no
+        // contact behind it, so it cannot unsubscribe anyone by accident.
+        const unsub = `${(c.config.publicUnsubscribeOrigin || "").replace(/\/$/, "")}/api/unsubscribe?token=preview`;
         const r = renderEmail(
           camp as { subject: string; body: string; preheader: string },
-          { name: "Người kiểm thử", email: "preview@example.invalid" },
+          { name: "Bạn", email: p.to },
           ws!.name,
-          "#local-preview",
+          unsub,
           campaignLocale(camp),
         );
         await c.config.transport.send({
           ...r,
-          to: "preview@example.invalid",
-          unsubscribe: "#local-preview",
+          to: p.to,
+          unsubscribe: unsub,
           idempotencyKey: uuid(),
         });
-        await audit(c, w, "campaign.capture_test", camp.name).run();
-        return json({ ok: true, mode: "local-capture" });
+        await audit(c, w, "campaign.test_sent", `${camp.name} → ${p.to}`).run();
+        return json({
+          ok: true,
+          mode: c.config.liveEnabled ? "live" : "capture",
+          to: p.to,
+        });
       }
       if (action === "preflight" && method === "GET") {
         const a = await audience(c, w, camp);

@@ -439,4 +439,12 @@ export const ru: Pack = {
   "Đổi tên workspace": "Переименовать пространство",
   "Đã đổi tên workspace": "Пространство переименовано",
   "Tên workspace quá ngắn": "Название пространства слишком короткое",
+  "Email nhận thử": "Email для теста",
+  "Gửi thử": "Отправить тест",
+  "Đã gửi thử tới {email}": "Тест отправлен на {email}",
+  "Lưu bản nháp trước khi gửi thử": "Сохраните черновик перед тестом",
+  "Địa chỉ email không hợp lệ": "Неверный адрес email",
+  "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
+    "5 тестов за 10 минут — попробуйте позже",
+  "Chưa cấu hình cách gửi thư": "Способ отправки не настроен",
 };

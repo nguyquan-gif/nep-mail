@@ -204,7 +204,7 @@ const server = createServer(async (req, res) => {
         "content-type": "application/json",
         "cache-control": "no-store",
       });
-      res.end(JSON.stringify({ status: "ok", version: "0.3.0-alpha.4" }));
+      res.end(JSON.stringify({ status: "ok", version: "0.4.0-alpha.1" }));
       return;
     }
     if (url.pathname === "/auth/login" && req.method === "POST") {
