@@ -86,6 +86,32 @@ double opt-in link. The subscriber never needs an account.</sub>
 - SQLite persistence/migrations, session auth, CSRF origin checks, login
   throttling, 53 automated core/HTTP/SMTP/i18n/IMAP/relay/test-send/retry tests.
 
+## Compared with listmonk and Keila
+
+[listmonk](https://github.com/knadh/listmonk) and
+[Keila](https://github.com/pentacent/keila) are older, larger and far more
+tested than Nếp Mail. If one already works for you, keep it. All three are
+AGPL-3.0 and self-hostable; the differences are in what each one assumes.
+
+|                     | listmonk                       | Keila                                  | Nếp Mail                           |
+| ------------------- | ------------------------------ | -------------------------------------- | ---------------------------------- |
+| Since               | 2019                           | 2021, also sold as Keila Cloud         | 2026, alpha, one maintainer        |
+| Stack               | Go binary + PostgreSQL         | Elixir + PostgreSQL                    | Node + one SQLite file             |
+| Sending             | SMTP (several), messengers     | SMTP, SES, Sendgrid, Mailgun, Postmark | SMTP/Postfix, Brevo HTTP API       |
+| Editor              | Visual builder, HTML, Markdown | Block, Markdown, MJML                  | Plain text over four templates     |
+| Open/click tracking | Optional, can be anonymous     | Optional, per campaign                 | None, and no switch to add it      |
+| Audience            | SQL queries over subscribers   | Segment editor                         | All consented contacts, or one tag |
+| Vietnamese UI       | Community translation          | Not yet                                | Source language                    |
+
+Choose listmonk for big lists, SQL segmentation and roles. Choose Keila for a
+polished editor, or if you may want someone else to host it later. Nếp Mail is
+for a small team with a list it built itself: one file to back up instead of a
+database server, consent stored with its source, SPF/DKIM/DMARC checks and a
+DKIM key before the first send, and nothing in the email that reports back.
+
+What that costs you: no open or click statistics, no segmentation beyond tags, no
+visual editor, and no load testing yet.
+
 ## Keep it free
 
 This is not a product with a free tier — there is one tier, and it is all of it.
