@@ -453,4 +453,9 @@ export const pt: Pack = {
   "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
     "5 testes em 10 minutos — tente novamente depois",
   "Chưa cấu hình cách gửi thư": "Nenhum método de envio configurado",
+  "Gửi lại thư lỗi": "Reenviar emails com falha",
+  "Đã xếp lại {n} thư lỗi": "{n} emails com falha reenfileirados",
+  "Không có thư lỗi để gửi lại": "Nenhum email com falha",
+  "Gửi lại những thư đã lỗi, không gửi lại thư đã nhận":
+    "Reenvia apenas os emails que falharam, nunca os entregues",
 };

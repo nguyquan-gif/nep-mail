@@ -448,4 +448,9 @@ export const ja: Pack = {
   "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
     "10分間に5回テスト済み。しばらくしてから再試行してください",
   "Chưa cấu hình cách gửi thư": "送信方法が設定されていません",
+  "Gửi lại thư lỗi": "失敗したメールを再送",
+  "Đã xếp lại {n} thư lỗi": "失敗したメール {n} 件を再キューしました",
+  "Không có thư lỗi để gửi lại": "再送する失敗メールはありません",
+  "Gửi lại những thư đã lỗi, không gửi lại thư đã nhận":
+    "失敗したメールだけを再送し、配信済みには送りません",
 };

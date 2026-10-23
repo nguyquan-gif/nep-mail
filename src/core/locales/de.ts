@@ -449,4 +449,9 @@ export const de: Pack = {
   "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
     "5 Tests in 10 Minuten — später erneut versuchen",
   "Chưa cấu hình cách gửi thư": "Kein Versandweg konfiguriert",
+  "Gửi lại thư lỗi": "Fehlgeschlagene E-Mails erneut senden",
+  "Đã xếp lại {n} thư lỗi": "{n} fehlgeschlagene E-Mails erneut eingereiht",
+  "Không có thư lỗi để gửi lại": "Keine fehlgeschlagenen E-Mails",
+  "Gửi lại những thư đã lỗi, không gửi lại thư đã nhận":
+    "Nur fehlgeschlagene E-Mails erneut senden, nie zugestellte",
 };

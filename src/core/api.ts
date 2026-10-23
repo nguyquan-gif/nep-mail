@@ -825,14 +825,20 @@ export async function applyBounceEvents(
         event.email,
       ).run();
       if ((result as { changes?: number })?.changes) suppressed += 1;
-      if ((result as { changes?: number })?.changes || workspaceId)
+      if ((result as { changes?: number })?.changes || workspaceId) {
+        // Keep the diagnostic: the suppression list has to explain itself
+        // later, and "550" alone does not tell an operator anything.
+        const reason = [event.status, event.diagnostic]
+          .filter((v, i, all) => v && all.indexOf(v) === i)
+          .join(" · ");
         await audit(
           c,
           w,
           action,
-          `${event.email}${event.status ? " · " + event.status : ""}`,
+          `${event.email}${reason ? " · " + reason : ""}`.slice(0, 400),
           actor,
         ).run();
+      }
     }
   }
   return { received: events.length, suppressed };
@@ -1014,7 +1020,16 @@ export async function handleApi(req: Request, c: Context): Promise<Response> {
       const [people, camps, logs, keys, team, counts] = await Promise.all([
         q(
           c,
-          "SELECT * FROM contacts WHERE workspace_id=? ORDER BY created_at DESC LIMIT 501",
+          `SELECT c.*, (
+             SELECT replace(a.detail, c.email || ' · ', '') FROM audit a
+              WHERE a.workspace_id=c.workspace_id
+                AND a.action IN ('contact.bounce','contact.complaint','contact.suppressed')
+                AND a.detail LIKE c.email || '%'
+              ORDER BY a.created_at DESC LIMIT 1
+           ) AS suppressed_reason
+             FROM contacts c
+            WHERE c.workspace_id=?
+            ORDER BY c.created_at DESC LIMIT 501`,
           w,
         ).all(),
         q(
@@ -1212,6 +1227,38 @@ export async function handleApi(req: Request, c: Context): Promise<Response> {
           mode: c.config.liveEnabled ? "live" : "capture",
           to: p.to,
         });
+      }
+      if (action === "retry" && method === "POST") {
+        await authorize(c, w, true, true);
+        if (camp.status === "draft" || camp.status === "cancelled")
+          throw new Problem(
+            409,
+            "Chỉ gửi lại được thư lỗi của chiến dịch đã xếp hàng",
+          );
+        if (!c.config.transport)
+          throw new Problem(409, "Chưa cấu hình cách gửi thư");
+        const again = await q(
+          c,
+          `UPDATE deliveries SET status='pending', error=NULL, provider_id=NULL, updated_at=?
+            WHERE workspace_id=? AND campaign_id=? AND status IN ('failed','unknown')
+            RETURNING id`,
+          now(),
+          w,
+          id,
+        ).all();
+        if (!again.results.length) return json({ queued: 0 });
+        // The worker only claims rows for a queued campaign.
+        await c.db.batch([
+          q(
+            c,
+            "UPDATE campaigns SET status='queued', updated_at=? WHERE workspace_id=? AND id=?",
+            now(),
+            w,
+            id,
+          ),
+          audit(c, w, "campaign.retried", `${again.results.length} thư lỗi`),
+        ]);
+        return json({ queued: again.results.length });
       }
       if (action === "preflight" && method === "GET") {
         const a = await audience(c, w, camp);

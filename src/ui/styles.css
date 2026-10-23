@@ -2356,3 +2356,12 @@ tbody tr:hover {
   border-radius: 7px;
   background: #fff;
 }
+
+.suppressed-reason {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #8a5a3b;
+  max-width: 220px;
+  overflow-wrap: anywhere;
+}

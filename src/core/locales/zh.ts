@@ -428,4 +428,9 @@ export const zh: Pack = {
   "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
     "10 分钟内已测试 5 次，请稍后再试",
   "Chưa cấu hình cách gửi thư": "未配置发送方式",
+  "Gửi lại thư lỗi": "重发失败的邮件",
+  "Đã xếp lại {n} thư lỗi": "已将 {n} 封失败邮件重新排队",
+  "Không có thư lỗi để gửi lại": "没有可重发的失败邮件",
+  "Gửi lại những thư đã lỗi, không gửi lại thư đã nhận":
+    "仅重发失败的邮件，绝不重发已送达的",
 };

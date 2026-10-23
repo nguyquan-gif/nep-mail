@@ -1146,6 +1146,11 @@ export default function App({
                                   </td>
                                   <td>
                                     <Badge value={p.status} />
+                                    {p.suppressed_reason ? (
+                                      <small className="suppressed-reason">
+                                        {p.suppressed_reason}
+                                      </small>
+                                    ) : null}
                                   </td>
                                   <td>
                                     {p.consent ? (
@@ -2163,9 +2168,13 @@ export default function App({
                         "Đã xếp hàng {n} người nhận. Gửi chỉ chạy khi cấu hình sẵn sàng.",
                         { n: result.queued },
                       )
-                    : a === "cancel"
-                      ? t("Đã hủy chiến dịch")
-                      : t("Đã xử lý một đợt gửi"),
+                    : a === "retry"
+                      ? result.queued
+                        ? t("Đã xếp lại {n} thư lỗi", { n: result.queued })
+                        : t("Không có thư lỗi để gửi lại")
+                      : a === "cancel"
+                        ? t("Đã hủy chiến dịch")
+                        : t("Đã xử lý một đợt gửi"),
               );
             })
           }
@@ -2701,6 +2710,18 @@ function CampaignEditor({
                   {t("Gửi thử")}
                 </button>
               </form>
+            )}
+          {value.id &&
+            canProcess &&
+            (value.status === "queued" || value.status === "completed") && (
+              <button
+                className="button"
+                disabled={busy}
+                title={t("Gửi lại những thư đã lỗi, không gửi lại thư đã nhận")}
+                onClick={() => onAction("retry")}
+              >
+                {t("Gửi lại thư lỗi")}
+              </button>
             )}
           {editable && (
             <button

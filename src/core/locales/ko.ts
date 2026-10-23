@@ -443,4 +443,9 @@ export const ko: Pack = {
   "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
     "10분에 5회 테스트했습니다. 잠시 후 다시 시도하세요",
   "Chưa cấu hình cách gửi thư": "발송 방법이 설정되지 않았습니다",
+  "Gửi lại thư lỗi": "실패한 메일 재발송",
+  "Đã xếp lại {n} thư lỗi": "실패한 메일 {n}건을 다시 대기열에 넣었습니다",
+  "Không có thư lỗi để gửi lại": "재발송할 실패 메일이 없습니다",
+  "Gửi lại những thư đã lỗi, không gửi lại thư đã nhận":
+    "실패한 메일만 재발송하고, 전달된 메일은 보내지 않습니다",
 };

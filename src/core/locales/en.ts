@@ -444,4 +444,9 @@ export const en: Pack = {
   "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
     "5 test sends in 10 minutes — try again shortly",
   "Chưa cấu hình cách gửi thư": "No sending method is configured",
+  "Gửi lại thư lỗi": "Retry failed emails",
+  "Đã xếp lại {n} thư lỗi": "Re-queued {n} failed emails",
+  "Không có thư lỗi để gửi lại": "No failed emails to retry",
+  "Gửi lại những thư đã lỗi, không gửi lại thư đã nhận":
+    "Re-send only the emails that failed, never the delivered ones",
 };

@@ -454,4 +454,9 @@ export const es: Pack = {
   "Đã gửi thử 5 lần trong 10 phút, thử lại sau":
     "5 envíos de prueba en 10 minutos: inténtalo más tarde",
   "Chưa cấu hình cách gửi thư": "No hay un método de envío configurado",
+  "Gửi lại thư lỗi": "Reintentar emails fallidos",
+  "Đã xếp lại {n} thư lỗi": "Se reencolaron {n} emails fallidos",
+  "Không có thư lỗi để gửi lại": "No hay emails fallidos",
+  "Gửi lại những thư đã lỗi, không gửi lại thư đã nhận":
+    "Reenvía solo los emails fallidos, nunca los entregados",
 };
